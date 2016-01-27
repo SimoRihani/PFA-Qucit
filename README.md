@@ -20,6 +20,7 @@ Clone Qucit-App with `git clone https://github.com/piroux/pfa29_client`
 
 Run the install.sh script :
 	cd pfa29_client/
+	chmod 700 install.sh
 	./install.sh
 
 ####Manual install :
