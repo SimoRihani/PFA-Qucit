@@ -1,14 +1,14 @@
 # Qucit-App ![Platforms](https://img.shields.io/badge/platform-ios%20%7C%20android-lightgrey.svg)
 
-App is a cross-platform mobile application, developed by 6 computer science students from ENSEIRB-MATMECA, 
+App is a cross-platform mobile application, developed by 6 computer science students from [ENSEIRB-MATMECA][], 
 a French Engineering School in Bordeaux.
 
 The purpose of App is redirecting users in the transportation failure on the Bordeaux-Metropole network.
-Its has been developed for a start-up incubated in the Aquitaine Regional Incubator called Qucit.
+Its has been developed for a start-up incubated in the Aquitaine Regional Incubator called [Qucit][].
 
-App is available for all platforms supported by the Apache Cordova framework but actually only tested on iOS and Android.
+App is available for all platforms supported by the [Apache Cordova][] framework but actually only tested on iOS and Android.
 
-The client side is developed with Polymer and Material Design Google frameworks, and the back-end with Python throught Flask and Pandas framworks.
+The client side is developed with [Polymer][] and [Material Design][] Google frameworks, and the back-end with Python throught [Flask][] and [Pandas][] frameworks.
 
 ##Installation
 
@@ -70,7 +70,10 @@ App is licensed under the GNU LGPL, Version 3.0. See LICENSE for full license te
 - Romain RAMBAUD - Romain.Rambaud@enseirb-matmeca.fr
 - Nathan REAVAILLE - Nathan.Reavaille@enseirb-matmeca.fr
 
-
-[Polymer]: https://www.polymer-project.org/
+[ENSEIRB-MATMECA]: www.enseirb-matmeca.fr
+[Qucit]: www.qucit.com
+[Polymer]: https://www.polymer-project.org
 [Material Design]: https://www.google.com/design/spec/material-design/introduction.html
-[Apache Cordova]: https://cordova.apache.org/
+[Apache Cordova]: https://cordova.apache.org
+[Flask]: http://flask.pocoo.org
+[Pandas]: http://pandas.pydata.org
