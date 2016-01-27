@@ -70,8 +70,8 @@ App is licensed under the GNU LGPL, Version 3.0. See LICENSE for full license te
 - Romain RAMBAUD - Romain.Rambaud@enseirb-matmeca.fr
 - Nathan REAVAILLE - Nathan.Reavaille@enseirb-matmeca.fr
 
-[ENSEIRB-MATMECA]: www.enseirb-matmeca.fr
-[Qucit]: www.qucit.com
+[ENSEIRB-MATMECA]: https://www.enseirb-matmeca.fr
+[Qucit]: https://www.qucit.com
 [Polymer]: https://www.polymer-project.org
 [Material Design]: https://www.google.com/design/spec/material-design/introduction.html
 [Apache Cordova]: https://cordova.apache.org
