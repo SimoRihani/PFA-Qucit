@@ -17,9 +17,9 @@ install () {
 	mv qucit/* .
 	rm -r qucit/
 	echo Adding platform...
-    cordova platform add $1
-    # Build stage
-    cordova build
+    	cordova platform add $1
+    	# Build stage
+    	cordova build
 }
 
 echo --------------------------------------------------------
