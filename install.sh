@@ -12,7 +12,6 @@ install () {
 	echo Installing for $chosen ...
 	
 	# Installation stage
-	cd pfa29_client/
 	cordova create qucit com.example.qucit App
 	rm -r qucit/www/
 	mv qucit/* .
