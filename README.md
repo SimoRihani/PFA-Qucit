@@ -44,6 +44,16 @@ and other supported platforms if you want.
 
 Build it with `cordova build` or just run it on your device  with `cordova run android` and/or `cordova run ios`.
 
+####Overview in your browser :
+
+If you want to have an overview of App on your browser, run the following :
+
+	cd pfa29_client/
+	python -m SimpleHTTPServer
+	
+You can see the result in your browser by going on your localhost port 8000 :
+`localhost:8000`
+
 ##Get App
 
 If you want App on your smartphone, you can build it yourself by following the steps described above.
