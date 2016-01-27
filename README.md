@@ -70,10 +70,11 @@ App is licensed under the GNU LGPL, Version 3.0. See LICENSE for full license te
 - Romain RAMBAUD - Romain.Rambaud@enseirb-matmeca.fr
 - Nathan REAVAILLE - Nathan.Reavaille@enseirb-matmeca.fr
 
-[ENSEIRB-MATMECA]: https://www.enseirb-matmeca.fr
-[Qucit]: https://www.qucit.com
-[Polymer]: https://www.polymer-project.org
-[Material Design]: https://www.google.com/design/spec/material-design/introduction.html
-[Apache Cordova]: https://cordova.apache.org
+[ENSEIRB-MATMECA]: http://www.enseirb-matmeca.fr
+[Qucit]: http://www.qucit.com
+[Aquitaine Regional Incubator]: http://www.incubateur-aquitaine.com
+[Polymer]: http://www.polymer-project.org
+[Material Design]: https//www.google.com/design/spec/material-design/introduction.html
+[Apache Cordova]: http://cordova.apache.org
 [Flask]: http://flask.pocoo.org
 [Pandas]: http://pandas.pydata.org
