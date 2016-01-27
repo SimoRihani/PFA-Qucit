@@ -26,7 +26,7 @@ Run the install.sh script :
 
 Run the following :
 
-	cd Qucit-App/
+	cd pfa29_client/
 	cordova create qucit com.debug.qucit App
 	rm -r qucit/www/
 	mv qucit/* .
