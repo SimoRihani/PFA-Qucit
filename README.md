@@ -1,6 +1,6 @@
 # Qucit-App ![Platforms](https://img.shields.io/badge/platform-ios%20%7C%20android-lightgrey.svg)
 
-App is a cross-platform application, developed by 6 computer science students from ENSEIRB-MATMECA, 
+App is a cross-platform mobile application, developed by 6 computer science students from ENSEIRB-MATMECA, 
 a French Engineering School in Bordeaux.
 
 The purpose of App is redirecting users in the transportation failure on the Bordeaux-Metropole network.
