@@ -48,11 +48,11 @@ Build it with `cordova build` or just run it on your device  with `cordova run a
 
 If you want to have an overview of App on your browser, run the following :
 
-	cd pfa29_client/
+	cd pfa29_client/www/
 	python -m SimpleHTTPServer
 	
-You can see the result in your browser by going on your localhost port 8000 :
-`localhost:8000`
+You can see the result in your browser by going to your localhost on port 8000 :
+`http://localhost:8000`
 
 ##Get App
 
