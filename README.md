@@ -4,7 +4,7 @@ App is a cross-platform mobile application, developed by 6 computer science stud
 a French Engineering School in Bordeaux.
 
 The purpose of App is redirecting users in the transportation failures on the Bordeaux-Metropole network.
-Its has been developed for a start-up incubated in the Aquitaine Regional Incubator called [Qucit][].
+Its has been developed for a start-up incubated in the [Aquitaine Regional Incubator][] called [Qucit][].
 
 App is available for all platforms supported by the [Apache Cordova][] framework but actually only tested on iOS and Android.
 
