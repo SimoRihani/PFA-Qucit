@@ -68,11 +68,12 @@ App is licensed under the GNU LGPL, Version 3.0. See LICENSE for full license te
 
 ###Supervisors
 
-- Toufiq AHMED - tad@labri.fr
+- Toufiq AHMED (Professor at Bordeaux-INP ENSERIB-MATMECA) - toufik.ahmedarobaselabri.fr
 
 ###Client
 
-- Hassene BENSALEM - hassene.bensalem@qucit.com
+- Nicolas BONOTTE (CTO at Qucit) - nicolas.bonotte@qucit.com
+- Hassene BENSALEM (CTO at Qucit) - hassene.bensalem@qucit.com
 
 ###Students
 
