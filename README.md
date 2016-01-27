@@ -13,12 +13,14 @@ The client side is developed with [Polymer][] and [Material Design][] Google fra
 ##Installation
 
 First, you need to get Cordova, with npm : npm install -g cordova or download it from the website.
+And also, you have to install the [Android SDK][] to build android App version, or [Xcode][] to build for iOS. 
 
 Clone Qucit-App with `git clone https://github.com/piroux/pfa29_client`
 
 ####Auto install :
 
 Run the install.sh script :
+
 	cd pfa29_client/
 	chmod 700 install.sh
 	./install.sh
@@ -79,3 +81,5 @@ App is licensed under the GNU LGPL, Version 3.0. See LICENSE for full license te
 [Apache Cordova]: http://cordova.apache.org
 [Flask]: http://flask.pocoo.org
 [Pandas]: http://pandas.pydata.org
+[Android SDK]: http://developer.android.com/sdk/installing/index.html
+[Xcode]: https://itunes.apple.com/fr/app/xcode/id497799835?mt=12
