@@ -3,9 +3,10 @@
 App is a multi-platform application, developed by 6 computer science students from ENSEIRB-MATMECA, 
 a French Engineering School in Bordeaux.
 
+The purpose of App is redirecting users in the transportation failure on the Bordeaux-Metropole network.
 Its has been developed for a start-up incubated in the Aquitaine Regional Incubator called Qucit.
 
-It is available for all platforms supported by the Apache Cordova framework but actually only tested on iOS and Android.
+App is available for all platforms supported by the Apache Cordova framework but actually only tested on iOS and Android.
 
 The client side is developed with Polymer and Material Design Google frameworks, and the back-end with Python throught Flask and Pandas framworks.
 
