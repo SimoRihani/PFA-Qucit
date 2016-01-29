@@ -89,7 +89,7 @@ App is licensed under the GNU LGPL, Version 3.0. See LICENSE for full license te
 [Qucit]: http://www.qucit.com
 [Aquitaine Regional Incubator]: http://www.incubateur-aquitaine.com
 [Polymer]: http://www.polymer-project.org
-[Material Design]: https//www.google.com/design/spec/material-design/introduction.html
+[Material Design]: https://www.google.com/design/spec/material-design/introduction.html
 [Apache Cordova]: http://cordova.apache.org
 [npm]: https://www.npmjs.com/
 [Flask]: http://flask.pocoo.org
