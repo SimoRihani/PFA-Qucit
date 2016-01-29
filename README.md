@@ -3,7 +3,7 @@
 App is a cross-platform mobile application, developed by 6 computer science students from [ENSEIRB-MATMECA][], 
 a French Engineering School in Bordeaux.
 
-The purpose of App is redirecting users in the transportation failures on the Bordeaux-Metropole network.
+The purpose of App is redirecting users in the transportation failures on Bordeaux-Metropole network.
 Its has been developed for a start-up incubated in the [Aquitaine Regional Incubator][] called [Qucit][].
 
 App is available for all platforms supported by the [Apache Cordova][] framework but actually only tested on iOS and Android.
@@ -68,16 +68,16 @@ App is licensed under the GNU LGPL, Version 3.0. See LICENSE for full license te
 
 ###Supervisor
 
-- Toufiq AHMED (Professor and head of Computer science department at Bordeaux-INP ENSERIB-MATMECA) - toufik.ahmed@labri.fr
+- Toufiq AHMED (Professor and head of Computer Science Department at [Bordeaux-INP][] [ENSEIRB-MATMECA][]) - toufik.ahmed@labri.fr
 
 ###Client
 
-- Nicolas BONOTTE (CTO at Qucit) - nicolas.bonotte@qucit.com
-- Hassene BENSALEM (CTO at Qucit) - hassene.bensalem@qucit.com
+- Nicolas BONOTTE (CTO at [Qucit][]) - nicolas.bonotte@qucit.com
+- Hassene BENSALEM (CTO at [Qucit][]) - hassene.bensalem@qucit.com
 
 ###Students
 
-- Mohammed RIHANI - Mohammed.Rihani@enseirb-matmeca.fr
+- [Mohammed RIHANI][] - Mohammed.Rihani@enseirb-matmeca.fr
 - Mehdi BOUNAKHLA - Mehdi.Bounakhla@enseirb-matmeca.fr
 - Pierre ROUX - Pierre.Roux@enseirb-matmeca.fr
 - Victor SAINT GUILHEM - Victor.Saint-Guilhem@enseirb-matmeca.fr
@@ -85,6 +85,7 @@ App is licensed under the GNU LGPL, Version 3.0. See LICENSE for full license te
 - Nathan REAVAILLE - Nathan.Reavaille@enseirb-matmeca.fr
 
 [ENSEIRB-MATMECA]: http://www.enseirb-matmeca.fr
+[Bordeaux-INP]: https://www.bordeaux-inp.fr/
 [Qucit]: http://www.qucit.com
 [Aquitaine Regional Incubator]: http://www.incubateur-aquitaine.com
 [Polymer]: http://www.polymer-project.org
@@ -95,3 +96,4 @@ App is licensed under the GNU LGPL, Version 3.0. See LICENSE for full license te
 [Pandas]: http://pandas.pydata.org
 [Android SDK]: http://developer.android.com/sdk/installing/index.html
 [Xcode]: https://itunes.apple.com/fr/app/xcode/id497799835?mt=12
+[Mohammed RIHANI]: http://mrihani.vvv.enseirb-matmeca.fr
