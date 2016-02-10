@@ -68,7 +68,7 @@ App is licensed under the GNU LGPL, Version 3.0. See LICENSE for full license te
 
 ###Supervisor
 
-- Toufiq AHMED (Professor and head of Computer Science Department at [Bordeaux-INP][] [ENSEIRB-MATMECA][]) - toufik.ahmed@labri.fr
+- Toufik AHMED (Professor and head of Computer Science Department at [Bordeaux-INP][] [ENSEIRB-MATMECA][]) - toufik.ahmed@labri.fr
 
 ###Client
 
