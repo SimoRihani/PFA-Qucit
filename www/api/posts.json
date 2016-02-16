@@ -10,7 +10,8 @@
     "avatar" : "img/B.png",
     "favorite": false,
     "breakdown": false,
-    "connection": false 
+    "connection": false,
+    "deleted": false 
   },
   {
     "pid": 2,
@@ -23,7 +24,8 @@
     "avatar" : "img/B.png",
     "favorite": true,
     "breakdown": true,
-    "connection": false
+    "connection": false,
+    "deleted": false 
   },
   {
     "pid": 3,
@@ -34,9 +36,10 @@
     "time" : "19:00",
     "day" : "Lundi",
     "avatar" : "img/BA.png",
-    "favorite": false,
+    "favorite": true,
     "breakdown": false,
-    "connection": true
+    "connection": true,
+    "deleted": false 
   },
   {
     "pid": 4,
@@ -49,7 +52,8 @@
     "avatar" : "img/C.png",
     "favorite": false,
     "breakdown": false,
-    "connection": false
+    "connection": false,
+    "deleted": false 
   },
   {
     "pid": 5,
@@ -62,7 +66,8 @@
     "avatar" : "img/lianes16.png",
     "favorite": false,
     "breakdown": false,
-    "connection": false
+    "connection": false,
+    "deleted": false 
   },
   {
     "pid": 6,
@@ -75,6 +80,7 @@
     "avatar" : "img/B.png",
     "favorite": false,
     "breakdown": false,
-    "connection": false
+    "connection": false,
+    "deleted": false 
   }
 ]

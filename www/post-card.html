@@ -1,10 +1,25 @@
 <link rel="import" href="bower_components/polymer/polymer.html">
-<link rel="import" href="bower_components/core-icon-button/core-icon-button.html">
-<link rel="import" href="bower_components/paper-spinner/paper-spinner.html">
+<link rel="import" href="bower_components/paper-icon-button/paper-icon-button.html">
 
-<polymer-element name="post-card">
-  <template>
-    <style>
+<dom-module id="post-card">
+  <style>
+    /* TODO(polyup): For speed, consider reworking these styles with .classes
+                     and #ids rather than [attributes].
+    */
+    [layout] {
+      @apply(--layout);
+    }
+    [layout][horizontal] {
+      @apply(--layout-horizontal);
+    }
+    [layout][center] {
+      @apply(--layout-center);
+    }
+    [layout][vertical] {
+      @apply(--layout-vertical);
+    }
+  </style>
+  <style>
     :host {
       display: block;
       position: relative;
@@ -95,24 +110,24 @@
     text-align: center;
     margin-left: 2px;
     }
-
     </style>
+  <template>
 
-    <div class="card-header" layout horizontal center>
+    <div class="card-header" layout="" horizontal="" center="">
       
-      <div layout vertical>
+      <div layout="" vertical="">
       <content select="h3"></content>
       <content select="h4"></content>
     </div>
 
-    <div vertical layout>
+    <div vertical="" layout="">
         <content select="div"></content>
         <content select="div"></content>
         <content select="div"></content>
         <content select="div"></content>
       </div>
     
-    <div layout vertical>
+    <div layout="" vertical="">
       <content select="h2"></content>
       <content select="h5"></content>
       <content select="core-icon-button"></content>
@@ -120,47 +135,47 @@
 
     </div>
 
-    <div horizontal layout>
-    <core-icon-button
-      id="favicon"
-      icon="done"
-      title="Enable/Disable"
-      on-tap="{{favoriteTapped}}">
-    </core-icon-button>
+    <div horizontal="" layout="">
+    <paper-icon-button id="favicon" icon="done" title="Enable/Disable" on-tap="favoriteTapped">
+    </paper-icon-button>
 
-    <core-icon-button
-      id="upicon"
-      icon="create"
-      title="Update">
-    </core-icon-button>
+    <paper-icon-button id="upicon" icon="create" title="Update">
+    </paper-icon-button>
 
-    <core-icon-button
-      id="delicon"
-      icon="clear"
-      title="Delete"
-      on-tap="{{deleteTapped}}">
-    </core-icon>
-  </div>
+    <paper-icon-button id="delicon" icon="clear" title="Delete" on-tap="deleteTapped">
+    
+  </paper-icon-button></div>
 
 
 
     <content></content>   
   </template>
-  
- 
-
   <script>
-  Polymer({
-    publish: {
-      favorite: {
-        value: false,
-        reflect: true
+    Polymer({
+      is: 'post-card',
+      properties: {
+        favorite: {
+          type: Boolean,
+          value: false,
+          notify: true,
+          reflectToAttribute: true
+        },
+        deleted: {
+          type: Boolean,
+          value: false,
+          notify: true,
+          reflectToAttribute: true
+        }
+      },
+      favoriteTapped: function (event, detail, sender) {
+        this.favorite = !this.favorite;
+        this.fire('favorite-tap');
+      },
+      deleteTapped: function (event, detail, sender) {
+        this.deleted = !this.deleted;
+        this.fire('deleted-tap');
       }
-    },
-    favoriteTapped: function(event, detail, sender) {
-      this.favorite = !this.favorite;
-      this.fire('favorite-tap');
-    }
-  });
+    });
   </script>
-</polymer-element>
+</dom-module>
+

@@ -1,18 +1,34 @@
 <link rel="import" href="bower_components/polymer/polymer.html">
 <link rel="import" href="post-service/post-service.html">
-<link rel="import" href="bower_components/paper-progress/paper-progress.html">
 <link rel="import" href="bower_components/paper-slider/paper-slider.html">
 <link rel="import" href="./post-card.html">
+<link rel="import" href="bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
 
-<polymer-element name="post-list" attributes="show">
-  <template>
-    <style>
+<dom-module id="post-list">
+  <style>
+    /* TODO(polyup): For speed, consider reworking these styles with .classes
+                     and #ids rather than [attributes].
+    */
+    [layout] {
+      @apply(--layout);
+    }
+    [layout][vertical] {
+      @apply(--layout-vertical);
+    }
+    [layout][center] {
+      @apply(--layout-center);
+    }
+  </style>
+  <style>
     :host {
       display: block;
       width: 100%;
     }
     post-card {
-      margin-bottom: 8px;
+      margin-bottom: 4px;
+      margin-top: 4px;
     }
     #connectionicon {
       color: #636363;
@@ -30,20 +46,16 @@
     :host([connection]) #connectionicon {
       color: #da4336;
     }
-
     
     paper-progress::shadow #activeProgress {
      background-color: red;
     }
-
     paper-progress::shadow #secondaryProgress {
      background-color: purple;
     }
-
     paper-progress::shadow #progressContainer {
      background-color: #64ffda;
     }
-
     paper-spinner.blue::shadow .circle {
       border-color: #4285f4;
       color: red;
@@ -70,64 +82,91 @@
     padding: 2px;
     }
     </style>
+  
 
-
+    <!-- <iron-ajax id="ajax" auto="" url="api/posts.json" handle-as="json" last-response="posts">
+    </iron-ajax>-->
+    <template>
     <post-service id="service" posts="{{posts}}"></post-service>
-    
-    <div layout vertical center>
-      <template repeat="{{post in posts}}">
-        <post-card
-          favorite="{{post.favorite}}"
-          on-favorite-tap="{{handleFavorite}}"
-          hidden?="{{show == 'favorites' && !post.favorite}}">
 
-          <h3>{{post.day}}</h3>
-          <h4>{{post.time}}</h4>
+
+    <div layout="" vertical="" center="">
+      <template is="dom-repeat" items="[[posts]]">
+        <post-card favorite="{{item.favorite}}" on-favorite-tap="handleFavorite" hidden="{{_computeHidden(item, show)}}" deleted="item.deteted" on-deleted-tap="handleDeleted" filter="isDeleted">
+
+          <h3><span>{{item.day}}</span></h3>
+          <h4><span>{{item.time}}</span></h4>
           <!--<img src="{{post.avatar}}" width="70" height="70">-->
           
-          <div vertical layout class="ligne"> <!-- Done in a static way, to improve to dynamic way -->
-            <div class="icon" style="background-color: red;" hidden?={{post.line!="B"}}>B</div>
-            <div class="icon"style="background-color: purple;" hidden?={{post.line!="A"}}>A</div>
-            <div class="icon"style="background-color: #01B0F0;" hidden?={{post.line!="C"}}>C</div>
-            <div class="icon"style="background-color: purple;" hidden?={{post.line!="16"}}>16</div>
-            <div class="icon" style="background-color: red;" hidden?={{post.line!="BA"}}>B</div>
-            <div class="icon"style="background-color: purple;" hidden?={{post.line!="BA"}}>A</div>
+          <div vertical="" layout="" class="ligne"> <!-- Done in a static way, to improve to dynamic way -->
+            <div class="icon" style="background-color: red;" hidden="{{_computeHidden2(item)}}">B</div>
+            <div class="icon" style="background-color: purple;" hidden="{{_computeHidden3(item)}}">A</div>
+            <div class="icon" style="background-color: #01B0F0;" hidden="{{_computeHidden4(item)}}">C</div>
+            <div class="icon" style="background-color: purple;" hidden="{{_computeHidden5(item)}}">16</div>
+            <div class="icon" style="background-color: red;" hidden="{{_computeHidden6(item)}}">B</div>
+            <div class="icon" style="background-color: purple;" hidden="{{_computeHidden6(item)}}">A</div>
           </div>
       
           
-          <h2>{{post.pathname}}</h2>
-          <h5>{{post.direction}}</h5>
-          <core-icon-button 
-            connection="{{post.connection}}"
-            id="connectionicon"
-            icon="attachment"
-            title="Connection"><h5>{{post.connStation}}</h5>
-          </core-icon-button>
-          <core-icon-button
-          id="alert"
-          hidden?={{!post.breakdown}}
-           icon="trending-up"
-           title="Alternative path ?">
-         </core-icon>
-        </post-card>
+          <h2><span>{{item.pathname}}</span></h2>
+          <h5><span>{{item.direction}}</span></h5>
+          <paper-icon-button connection="{{post.connection}}" id="connectionicon" icon="attachment" title="Connection"><h5><span>{{item.connStation}}</span></h5>
+          </paper-icon-button>
+          <paper-icon-button id="alert" icon="trending-up" title="Alternative path ?" hidden$="{{!posts.breakdown}}">
+         
+        </paper-icon-button></post-card>
       </template>
     </div>
   </template>
-
-  
-
   <script>
-  Polymer({
-    handleFavorite: function(event, detail, sender) {
-      var post = sender.templateInstance.model.post;
-      this.$.service.setFavorite(post.pid, post.favorite);
-    },
-    publish: {
-    connection: {
-      value: false,
-      reflect: true
-    }
-  }
-  });
+    Polymer({
+      is: 'post-list',
+      properties: {
+        connection: {
+          type: Boolean,
+          value: false,
+          notify: true,
+          reflectToAttribute: true
+        },
+        show: { type: String, notify: true, value: "0" },
+        
+      },
+      handleFavorite: function (e) {
+        var model = e.model;
+        model.set('item.favorite', (model.item.favorite));
+        console.log('Favorite changed of pid : ' + model.item.pid + ', to ' + model.item.favorite);
+      },
+      handleDeleted: function (e) {
+        var model = e.model;
+        model.set('item.deleted', (!model.item.deleted));
+        console.log('Delete changed of pid : ' + model.item.pid + ', to ' + model.item.deleted);
+      },
+      isDeleted: function(item) {
+      return item.deleted == 'true';
+      },
+      /*handleFavorite: function (event, detail, sender) {
+        var dataHost = (this.dataHost && this.dataHost._rootDataHost) || this.dataHost;
+        var item = sender.dataHost.item;
+        this.$.service.setFavorite(item.pid, item.favorite);
+      },*/
+      _computeHidden: function (post, show) {
+        return post.deleted || (show == '1' && !post.favorite);
+      },
+      _computeHidden2: function (post) {
+        return post.line != 'B';
+      },
+      _computeHidden3: function (post) {
+        return post.line != 'A';
+      },
+      _computeHidden4: function (post) {
+        return post.line != 'C';
+      },
+      _computeHidden5: function (post) {
+        return post.line != '16';
+      },
+      _computeHidden6: function (post) {
+        return post.line != 'BA';
+      }
+    });
   </script>
-</polymer-element>
+</dom-module>

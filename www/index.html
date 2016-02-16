@@ -2,32 +2,30 @@
 <html>
     <head>
 
-    <script src="../components/webcomponentsjs/webcomponents.js">
+    <script src="bower_components/webcomponentsjs/webcomponents-lite.min.js">
       </script>
 
+      <link rel="import" href="bower_components/iron-flex-layout/iron-flex-layout.html">
       <link rel="import" href="bower_components/polymer/polymer.html">
       <link rel="import" href="bower_components/font-roboto/roboto.html">
       <link rel="import"
-        href="bower_components/core-header-panel/core-header-panel.html">
+        href="bower_components/paper-header-panel/paper-header-panel.html">
       <link rel="import"
-        href="bower_components/core-toolbar/core-toolbar.html">
+        href="bower_components/paper-toolbar/paper-toolbar.html">
       <link rel="import"
         href="bower_components/paper-tabs/paper-tabs.html">
       <link rel="import" href="./post-list.html">
-
 
         <title>@Trajets</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
         <meta name="mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-capable" content="yes">
         <script src="bower_components/webcomponentsjs/webcomponents.js"></script>
-        <link rel="import" href="bower_components/core-scaffold/core-scaffold.html">
-        <link rel="import" href="bower_components/core-header-panel/core-header-panel.html">
-        <link rel="import" href="bower_components/core-menu/core-menu.html">
-        <link rel="import" href="bower_components/core-item/core-item.html">
+        <link rel="import" href="bower_components/iron-icons/iron-icons.html">
+        <link rel="import" href="bower_components/paper-header-panel/paper-header-panel.html">
         <link rel="import" href="bower_components/paper-toast/paper-toast.html">
         <link rel="import" href="bower_components/paper-fab/paper-fab.html">
-        <script type="text/javascript" src="cordova.js"></script>
+       
         <script type="text/javascript" src="js/index.js"></script>
         <script type="text/javascript">
             app.initialize();
@@ -39,12 +37,12 @@
         background-color: #E5E5E5;
         font-family: 'RobotoDraft', sans-serif;
       }
-      core-header-panel {
+      #php { /*paper-header-panel*/
         height: 100%;
         overflow: auto;
         -webkit-overflow-scrolling: touch; 
       }
-      core-toolbar {
+      #pt { /*paper-tabs*/
         background: #03a9f4;
         color: white;
       }
@@ -53,6 +51,7 @@
         padding: 3px;
         opacity: 0.8;
         text-align: center;
+        @apply(--layout-horizontal);
       }
       #addicon:hover {
         opacity: 1;
@@ -73,7 +72,19 @@
       .container {
         width: 88%;
         margin: 5px auto;
+        @apply(--layout-vertical-center);
       }
+     /* .icon {
+    position: relative;
+    color: #fff;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    opacity: 0.7;
+    text-align: center;
+    margin: 1.5px 1.5px 1.5px 1.5px;
+    padding: 2px;
+    }*/
       @media (min-width: 481px) {
         #tabs {
           width: 250px;
@@ -85,38 +96,43 @@
       </style>
     </head>
     <body unresolved>
-        <core-header-panel>
+        <paper-header-panel id="php">
 
-    <core-toolbar>
+    <paper-toolbar id="pt">
 
-      <paper-tabs id="tabs" selected="all" self-end>
-        <paper-tab name="all" title="All paths">All</paper-tab>
-        <paper-tab name="favorites" title="Active paths">Active</paper-tab>
+      <paper-tabs id="tabs" selected="0" self-end>
+        <paper-tab id="all" name="all" title="All paths">All</paper-tab>
+        <paper-tab id="favorites" name="favorites" title="Active paths">Active</paper-tab>
+        <paper-icon-button icon="refresh"></paper-icon-button>
+        <paper-icon-button icon="add">+</paper-icon-button>
       </paper-tabs>
 
-    </core-toolbar>
+    </paper-toolbar>
 
-        <br />
-        <div horizental layout id="addicon">
-          <core-icon-button
-          icon="add-circle">
-        </core-icon>
-          Add new path
-        </div>
         
-        <div class="container" layout vertical center>
-          <post-list show="all"></post-list>
+        <div class="container">
+          <!--<post-card>
+            <h3>Lundi</h3>
+            <h4>15:00</h4>
+            <div class="icon" style="background-color: red;">B</div>
+            <h2>Bergonié - Arts et métiers</h2>
+            <h5>Pessac Centre</h5>
+          </post-card>-->
+          <post-list show="0"></post-list>
+          
+
+          
         </div>
 
-      </core-header-panel>
+      </paper-header-panel>
 
       <script>
       var tabs = document.querySelector('paper-tabs');
       var list = document.querySelector('post-list');
 
-      tabs.addEventListener('core-select', function() {
-        list.show = tabs.selected;
-      });
+       tabs.addEventListener('iron-select', function () {
+      list.show = tabs.selected;
+    });
       </script>
     </body>
 </html>
