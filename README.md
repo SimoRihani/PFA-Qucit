@@ -8,7 +8,7 @@ Its has been developed for a start-up incubated in the [Aquitaine Regional Incub
 
 App is available for all platforms supported by the [Apache Cordova][] framework but actually only tested on iOS and Android.
 
-The client side is developed with [Polymer][] and [Material Design][] Google frameworks, and the back-end with Python throught [Flask][] and [Pandas][] frameworks.
+The client side is developed with [Polymer][] and [Material Design][] Google frameworks, and the back-end with Python through [Flask][] and [Pandas][] frameworks.
 
 ##Installation
 
