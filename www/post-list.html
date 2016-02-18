@@ -4,6 +4,8 @@
 <link rel="import" href="./post-card.html">
 <link rel="import" href="bower_components/paper-icon-button/paper-icon-button.html">
 <link rel="import" href="bower_components/paper-fab/paper-fab.html">
+<link rel="import" href="bower_components/paper-dropdown-menu/paper-dropdown-menu.html">
+<link rel="import" href="bower_components/paper-listbox/paper-listbox.html">
 <link rel="import" href="bower_components/iron-flex-layout/iron-flex-layout.html">
 <link rel="import" href="bower_components/iron-icons/maps-icons.html">
 
@@ -26,6 +28,8 @@
     :host {
       display: block;
       width: 100%;
+      --paper-menu-button-dropdown-background: #03a9f4;
+
     }
     post-card {
       margin-bottom: 4px;
@@ -84,31 +88,43 @@
         --paper-input-container-input-color: black;
     }
     paper-dropdown-menu {
-      --paper-dropdown-menu-input-color: #03a9f4;
+      --paper-dropdown-menu-focus-color: #03a9f4;
     }
+    
     paper-fab {
       --paper-fab-background: #03a9f4;
       --paper-fab-keyboard-focus-background: red;
+      /*position: relative; 
+      right:-43%;*/
+      margin: 3px;
+    }
+    #add {
       position: relative; 
-      right:-40%;
+      right:-43%;
+    }
+    #relo {
+      position: relative; 
+      right: -60%;
     }
     </style>
   
     
     <template>
       
-
-      <paper-fab icon="add" on-tap="showAddTaskDialog3" style="text-align: center;"></paper-fab>
+      <div class="layout horizontal">
+      <paper-fab id="add" icon="add" on-tap="showAddTaskDialog3" mini="true"></paper-fab>
+     <!-- <paper-fab id="relo" icon="refresh" on-tap= "refreshCall" mini="true"></paper-fab>-->
+    </div>
 
       <paper-dialog id="addTaskDialog" modal>
                 <h2 class="add">Add connection</h2>
-                <div><paper-input label="Connection station :" value="{{item.pathname}}">
+                <div><paper-input label="Connection station :" value="{{pathname}}">
                 </paper-input>
-                 <paper-input label="Arrival point :" value="">
+                 <paper-input label="Arrival point :" value="{{arrival}}">
                  </paper-input>
 
                  <paper-dropdown-menu label="Line" style="width:80px;">
-                  <paper-listbox class="dropdown-content">
+                  <paper-listbox class="dropdown-content" attr-for-selected="{{line}}">
                     <paper-item>A</paper-item>
                     <paper-item>B</paper-item>
                     <paper-item>C</paper-item>
@@ -118,28 +134,30 @@
 
                 <div>
                     <paper-button dialog-dismiss>Cancel</paper-button>
-                    <paper-button on-click="addTask">Add</paper-button>
+                    <paper-button on-click="addTask2">Add</paper-button>
                 </div>
             </paper-dialog>
 
             <paper-dialog id="addTaskDialog2" modal>
                 <h2 class="add">Alternative path</h2>
-                <p>Select your preferences for the alternative path</p>
+                <p>Select your preference for the alternative path</p>
                 <div style="text-align: center;"><iron-icon class="direction" icon="maps:directions-subway"></iron-icon>
                   <iron-icon class="direction" icon="maps:directions-bus"></iron-icon>
                 <iron-icon class="direction" icon="maps:directions-bike"></iron-icon>
                 <iron-icon class="direction" icon="maps:directions-walk"></iron-icon></div>
                 
                     <paper-button dialog-dismiss>Cancel</paper-button>
-                    <paper-button on-click="validate">Ok</paper-button>
+                    <paper-button on-click="showAddTaskDialog4">Ok</paper-button>
                 </div>
             </paper-dialog>
 
             <paper-dialog id="addTaskDialog3" modal>
                 <h2 class="add">Add new path</h2>
-                <div><paper-input label="Starting point :" value="{{item.pathname}}">
+                <div><paper-input label="Starting point :" value="{{pathname}}">
                 </paper-input>
-                 <paper-input label="Arrival point :" value="">
+                 <paper-input label="Arrival point :" value="{{pathname}}">
+                 </paper-input>
+                 <paper-input label="Direction :" value="{{direction}}">
                  </paper-input>
 
                  <paper-dropdown-menu label="Line" style="width:80px;">
@@ -155,6 +173,26 @@
                     <paper-button dialog-dismiss>Cancel</paper-button>
                     <paper-button on-click="addTask">Add</paper-button>
                 </div>
+            </paper-dialog>
+
+            <paper-dialog id="addTaskDialog4" modal style="width: 70%;">
+                <h2 class="add">Alternative path</h2><br />
+                <post-card style="width: 80%; margin: 3px;">
+                <div layout="" vertical="">
+               <h3></h3>
+               <h4></h4>
+             </div>
+             <div vertical="" layout="">
+              <div class="icon" style="background-color: red;">B</div>
+            </div>
+            <div layout="" vertical="">
+               <h2 style="width: 110%;">Victoire - Gambetta</h2>
+               <h5>Bassin à flot</h5>
+             </div>
+             </post-card>
+                  <div>
+                    <paper-button dialog-dismiss>Cancel</paper-button>
+                  </div>
             </paper-dialog>
 
 
@@ -208,18 +246,52 @@
         model.set('item.favorite', (model.item.favorite));
         console.log('Favorite changed of pid : ' + model.item.pid + ', to ' + model.item.favorite);
       },
-      handleDeleted: function (e) {
-        var model = e.model;
-        model.set('item.deleted', (!model.item.deleted));
-        console.log('Delete changed of pid : ' + model.item.pid + ', to ' + model.item.deleted);
-      },
       removeItem: function(e){
         var model = e.model;
         model.set('item.deleted', (!model.item.deleted));
+        if(model.item.deleted)
        this.splice('posts', model.selectedItem, 1);
        console.log('Delete changed of pid : ' + model.item.pid + ', to ' + model.item.deleted);
        /*this.splice('posts', 0, 0, '7');*/
       /*this.items.push({pathname: 'Hey-How'});*/
+    },
+    addTask: function(){
+      var task = {
+             pid: 7,
+            line: "B",
+            pathname : this.pathname,
+            direction : this.direction,
+            connStation : "", 
+            time : "8:00",
+            day : "Lundi",
+            avatar : "img/B.png",
+            favorite: false,
+            breakdown: false,
+            connection: false,
+            deleted: false
+        };
+        this.push('posts', task);
+       this.$.addTaskDialog3.close();
+      },
+      addTask2: function(){
+         console.log('Debug line :' + this.line);
+         this.$.addTaskDialog.close();
+      /*var task = {
+             pid: 7,
+            line: "B",
+            pathname : this.pathname,
+            direction : this.direction,
+            connStation : "", 
+            time : "8:00",
+            day : "Lundi",
+            avatar : "img/B.png",
+            favorite: false,
+            breakdown: false,
+            connection: false,
+            deleted: false
+        };
+        this.push('posts', task);
+       this.$.addTaskDialog3.close();*/
       },
       isDeleted: function(item) {
       return item.deleted == 'true';
@@ -231,15 +303,24 @@
       },*/
       showAddTaskDialog: function() {
         console.log('Add connection');
-        this.$.addTaskDialog.toggle();
+        this.$.addTaskDialog.open();
       },
       showAddTaskDialog2: function() {
         console.log('Alternative path computing');
-        this.$.addTaskDialog2.toggle();
+        this.$.addTaskDialog2.open();
       },
       showAddTaskDialog3: function() {
         console.log('Adding new path');
-        this.$.addTaskDialog3.toggle();
+        this.$.addTaskDialog3.open();
+      },
+      showAddTaskDialog4: function() {
+        console.log('Displaying new path');
+        this.$.addTaskDialog2.close();
+        this.$.addTaskDialog4.open();
+      },
+      refreshCall: function() {
+        console.log('Refreshing');
+        this.$.reload();
       },
       _computeHidden: function (post, show) {
         return post.deleted || (show == '1' && !post.favorite);
