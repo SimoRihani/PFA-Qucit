@@ -1,0 +1,14 @@
+[
+  {
+    "uid": 1,
+    "firstName": "Simo",
+    "lastName" : "Rihani",
+    "address" : "3 Rue Pauline Kergomard",
+    "zipCode" : "33800",
+    "city" : "Bordeaux",
+    "phone" : "(+33) 7 85 23 74 59",
+    "email" : "smimo22@gmail.com", 
+    "password" : "heyhey",
+    "isAdmin": false
+  }
+]

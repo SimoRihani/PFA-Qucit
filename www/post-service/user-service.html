@@ -1,38 +1,33 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
 
-<dom-module id="post-service">
+<dom-module id="user-service">
     <style>
         :host {
 
         }
     </style>
     <template>
-        <iron-ajax auto url="../api/posts.json" handle-as="json" on-response="tasksLoaded"></iron-ajax>
+        <iron-ajax auto url="../api/users.json" handle-as="json" on-response="tasksLoaded"></iron-ajax>
     </template>
 
 <script>
     Polymer({
-        is: "post-service",
+        is: "user-service",
         properties: {
-            posts: {
+            users: {
                 type: Array,
                 reflectToAttribute: true,
                 notify: true
             }
         },
         attached: function () {
-            this.posts = [];
+            this.users = [];
         },
         tasksLoaded: function (data) {
-            this.posts = data.detail.response;
-            console.log('Load paths data');
-
-        },
-        setFavorite: function (pid, isFavorite) {
-        // no service backend, just log the change
-        console.log('Favorite changed: ' + pid + ', now: ' + isFavorite);
-      }
+            this.users = data.detail.response;
+            console.log('Loas user data');
+        }
     });
 </script>
 </dom-module>
