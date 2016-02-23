@@ -45,7 +45,7 @@ and other supported platforms if you want.
 
 Build it with `cordova build` or just run it on your device  with `cordova run android` and/or `cordova run ios`.
 
-####Overview in your browser :
+####Overview on your browser :
 
 If you want to have an overview of App on your browser, run the following :
 
