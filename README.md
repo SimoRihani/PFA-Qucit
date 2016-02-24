@@ -1,22 +1,22 @@
-# Qucit-App ![Platforms](https://img.shields.io/badge/platform-ios%20%7C%20android-lightgrey.svg)
+# Qucit - Transport Track ![Platforms](https://img.shields.io/badge/platform-ios%20%7C%20android-lightgrey.svg)
 
-App is a cross-platform mobile application, developed by 6 computer science students from [Bordeaux-INP][] [ENSEIRB-MATMECA][], 
+Transport Track is a cross-platform mobile application, developed by 6 computer science students from [Bordeaux-INP][] [ENSEIRB-MATMECA][], 
 a French Engineering School in Bordeaux.
 
-The purpose of App is redirecting users in the transportation failures on Bordeaux-Metropole network.
+The purpose of Transport Track is redirecting users in the transportation failures on Bordeaux-Metropole network.
 Its has been developed for a start-up incubated in the [Aquitaine Regional Incubator][] called [Qucit][].
 
-App is available for all platforms supported by the [Apache Cordova][] framework but actually only tested on iOS and Android.
+Transport Track is available for all platforms supported by the [Apache Cordova][] framework but actually only tested on iOS and Android.
 
 The client side is developed with [Polymer][] and [Material Design][] Google frameworks, and the back-end with Python through [Flask][] and [Pandas][] frameworks.
 
 ##Installation
 
 First, you need to get [Apache Cordova][], with [npm][] : `npm install -g cordova` or download it from the website.
-And also, you have to install the [Android SDK][] to build android App version, or [Xcode][] to build it for iOS.
+And also, you have to install the [Android SDK][] to build android Transport Track version, or [Xcode][] to build it for iOS.
 (Think to include the SDK's `tools/` and `platform-tools/` directories  in your `PATH` after installing Android SDK (here's a link that can help you doing these installations : https://cordova.apache.org/docs/en/4.0.0/guide/platforms/android/ ))
 
-Clone Qucit-App with `git clone https://github.com/piroux/pfa29_client`
+Clone Qucit - Transport Track with `git clone https://github.com/piroux/pfa29_client`
 
 ####Auto install :
 
@@ -31,7 +31,7 @@ Run the install.sh script :
 Run the following :
 
 	cd pfa29_client/
-	cordova create qucit com.debug.qucit App
+	cordova create qucit com.debug.qucit Transport Track
 	rm -r qucit/www/
 	mv qucit/* .
 	rm -r qucit/
@@ -47,22 +47,22 @@ Build it with `cordova build` or just run it on your device  with `cordova run a
 
 ####Overview on your browser :
 
-If you want to have an overview of App on your browser, run the following :
+If you want to have an overview of Transport Track on your browser, run the following :
 
 	cd pfa29_client/www/
 	python -m SimpleHTTPServer
 	
 You can see the result in your browser by going to your localhost on port 8000 : `http://localhost:8000`
 
-##Get App
+##Get Transport Track
 
-If you want App on your smartphone, you can build it yourself by following the steps described above.
+If you want Transport Track on your smartphone, you can build it yourself by following the steps described above.
 
 Or you can just download our compiled version (22 Feb 2016) available here : https://drive.google.com/folderview?id=0B8GtnazCc-T7T3ZmZzlRTnY0V2s&usp=sharing
 
 ##Licensing
 
-App is licensed under the GNU LGPL, Version 3.0. See LICENSE for full license text.
+Transport Track is licensed under the GNU LGPL, Version 3.0. See LICENSE for full license text.
 
 ##Contacts
 
