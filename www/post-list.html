@@ -13,7 +13,7 @@
 <link rel="import" href="bower_components/iron-icons/maps-icons.html">
 <link rel="import" href="bower_components/neon-animation/animations/scale-up-animation.html">
 <link rel="import" href="bower_components/neon-animation/animations/fade-out-animation.html">
-
+<link rel="import" href="bower_components/paper-badge/paper-badge.html">
 
 <dom-module id="post-list">
   <style>
@@ -110,14 +110,22 @@
     paper-checkbox {
       --paper-checkbox-checked-color: #03a9f4;
     }
+    paper-badge {
+      --paper-badge-background: red;
+    }
     #user {
       position: absolute; 
-      right: 53%;
+      right: 58%;
       top: 2px;
     }
     #add {
       position: relative; 
-      right: -50%;
+      right: -42%;
+    }
+    #relo {
+     position: absolute; 
+      right: 34%;
+      top: 2px;
     }
     </style>
   
@@ -127,7 +135,7 @@
       <div class="layout horizontal center">
       <paper-fab id="user" icon="icons:supervisor-account" on-tap="showAddTaskDialog5" mini="true"></paper-fab>
       <paper-fab id="add" icon="add" on-tap="showAddTaskDialog3" mini="true"></paper-fab>
-     <!-- <paper-fab id="relo" icon="refresh" on-tap= "refreshCall" mini="true"></paper-fab>-->
+     <paper-fab id="relo" icon="refresh" on-tap= "refreshCall" mini="true"></paper-fab>
     </div>
 
 
@@ -206,6 +214,8 @@
                       <paper-item>B</paper-item>
                       <paper-item>C</paper-item>
                       <paper-item>16</paper-item>
+                      <paper-item>20</paper-item>
+                      <paper-item>1</paper-item>
                     </paper-listbox>
                   </paper-dropdown-menu>
                 </div>
@@ -250,8 +260,7 @@
                 <div>
                  <user-page>
 
-                  <img width="70" height="70"
-                    src="./img/Simo.png">
+                  <img width="70" height="70" src="img/Simo.png">
                   <h2><span>{{item.firstName}}</span> <span>{{item.lastName}}</span></h2>
                   <paper-item>
                   
@@ -296,6 +305,7 @@
 
     <div layout="" vertical="" center="">
       <template is="dom-repeat" items="[[posts]]" sort="_sort">
+  
         <post-card favorite="{{item.favorite}}" on-favorite-tap="handleFavorite" deleted="item.deteted" on-deleted-tap="removeItem" filter="isDeleted" hidden="{{_computeHidden(item, show)}}">
 
           <h3><span>{{item.day}}</span></h3>
@@ -303,23 +313,30 @@
           <!--<img src="{{post.avatar}}" width="70" height="70">-->
           
           <div vertical="" layout="" class="ligne"> <!-- Done in a dynamic way, handel less than 4 connections-->
-            <div class="icon" style="background-color: red;" hidden="{{_computeHidden2(item)}}">B</div>
-            <div class="icon" style="background-color: purple;" hidden="{{_computeHidden3(item)}}">A</div>
-            <div class="icon" style="background-color: #01B0F0;" hidden="{{_computeHidden4(item)}}">C</div>
+            <div class="icon" style="background-color: #DF0B19;" hidden="{{_computeHidden2(item)}}">B</div>
+            <div class="icon" style="background-color: #682B9E;" hidden="{{_computeHidden3(item)}}">A</div>
+            <div class="icon" style="background-color: #EC89E2;" hidden="{{_computeHidden4(item)}}">C</div>
             <div class="icon" style="background-color: purple;" hidden="{{_computeHidden5(item)}}">16</div>
+            <div class="icon" style="background-color: red;" hidden="{{_computeHidden44(item)}}">20</div>
+            <div class="icon" style="background-color: #586DC4;" hidden="{{_computeHidden55(item)}}">1</div>
 
 
-             <div class="icon" style="background-color: red;" hidden="{{_computeHidden6(item)}}">B</div>
-            <div class="icon" style="background-color: purple;" hidden="{{_computeHidden7(item)}}">A</div>
-            <div class="icon" style="background-color: #01B0F0;" hidden="{{_computeHidden8(item)}}">C</div>
+
+             <div class="icon" style="background-color: #DF0B19;" hidden="{{_computeHidden6(item)}}">B</div>
+            <div class="icon" style="background-color: #682B9E;" hidden="{{_computeHidden7(item)}}">A</div>
+            <div class="icon" style="background-color: #EC89E2;" hidden="{{_computeHidden8(item)}}">C</div>
             <div class="icon" style="background-color: purple;" hidden="{{_computeHidden9(item)}}">16</div>
+            <div class="icon" style="background-color: red;" hidden="{{_computeHidden444(item)}}">20</div>
+            <div class="icon" style="background-color: #50468C;" hidden="{{_computeHidden555(item)}}">1</div>
 
 
 
-            <div class="icon" style="background-color: red;" hidden="{{_computeHidden10(item)}}">B</div>
-            <div class="icon" style="background-color: purple;" hidden="{{_computeHidden11(item)}}">A</div>
-            <div class="icon" style="background-color: #01B0F0;" hidden="{{_computeHidden12(item)}}">C</div>
+            <div class="icon" style="background-color: #DF0B19;" hidden="{{_computeHidden10(item)}}">B</div>
+            <div class="icon" style="background-color: #682B9E;" hidden="{{_computeHidden11(item)}}">A</div>
+            <div class="icon" style="background-color: #EC89E2;" hidden="{{_computeHidden12(item)}}">C</div>
             <div class="icon" style="background-color: purple;" hidden="{{_computeHidden13(item)}}">16</div>
+            <div class="icon" style="background-color: red;" hidden="{{_computeHidden4444(item)}}">20</div>
+            <div class="icon" style="background-color: #50468C;" hidden="{{_computeHidden5555(item)}}">1</div>
           </div>
       
           
@@ -329,8 +346,10 @@
           </paper-icon-button>
           <paper-icon-button id="alert" icon="trending-up" title="Alternative path ?" on-tap="showAddTaskDialog2" hidden="{{!item.breakdown}}">
         </paper-icon-button>
-
+        <paper-badge icon="trending-up" label="alert" class="red" hidden="{{!item.breakdown}}"></paper-badge>
       </post-card>
+
+      
       </template>
     </div>
   </template>
@@ -406,6 +425,7 @@
       handleFavorite: function (e) {
         var model = e.model;
         var i = model.index + 1;
+        //model.favorite = !model.favorite;
         model.set('item.favorite', (model.item.favorite));
         console.log('Change active ' + i + ', to ' + model.item.favorite);
       },
@@ -413,8 +433,8 @@
         var model = e.model;
          var i = model.index + 1;
         model.set('item.deleted', (!model.item.deleted));
-        if(model.item.deleted)
-      this.splice('posts', model.index, 1);
+        //if(model.item.deleted)
+      this.splice('posts', i - 1, 1);
        console.log('Change delete ' + i + ', to ' + model.item.deleted);
        /*this.splice('posts', 0, 0, '7');*/
       /*this.items.push({pathname: 'Hey-How'});*/
@@ -473,6 +493,12 @@
 
     else if(s2 == 4)
        task.line = "16";
+    
+     else if(s2 == 5)
+       task.line = "20";
+    
+     else if(s2 == 6)
+       task.line = "1";
 
     else
         task.line = "B";
@@ -503,15 +529,21 @@
         else if(s == 4)
           model.line += '16';
 
+        else if(s == 5)
+         model.line += '20';
+
+        else if(s == 6)
+          model.line += '1';
+
         else
            model.line += 'B';
 
          model.arrival = this.arrival;
          model.connStation = this.connStation;
          model.direction += '/' + this.direction;
-         console.log('Added');
-         this.splice('posts', i + 1, 1);
+         console.log('Added ' + i + model.line);
          this.push('posts', model);
+         this.splice('posts', i + 1, 1);
 
          
          this.$.addTaskDialog.close();
@@ -566,7 +598,8 @@
       },
       refreshCall: function() {
         console.log('Refresh');
-        this.$.reload();
+        window.location.reload(true);
+        //this.$.reload();
       },
       _computeHidden: function (post, show) {
         return post.deleted || (show == '1' && !post.favorite);
@@ -583,6 +616,14 @@
       _computeHidden5: function (post) {
         return post.line.indexOf('16') != 0;
       },
+       _computeHidden44: function (post) {
+        return post.line.indexOf('20') != 0;
+      },
+      _computeHidden55: function (post) {
+        return post.line.indexOf('1') != 0 || post.line.indexOf('6') != -1;
+      },
+
+
       _computeHidden6: function (post) {
         return post.line.indexOf('B') != 1;
       },
@@ -595,6 +636,14 @@
       _computeHidden9: function (post) {
         return post.line.indexOf('16') != 1;
       },
+      _computeHidden444: function (post) {
+        return post.line.indexOf('20') != 1;
+      },
+      _computeHidden555: function (post) {
+        return post.line.indexOf('1') != 1;
+      },
+
+
       _computeHidden10: function (post) {
         return post.line.indexOf('B') != 2;
       },
@@ -606,6 +655,12 @@
       },
       _computeHidden13: function (post) {
         return post.line.indexOf('16') != 2;
+      },
+      _computeHidden4444: function (post) {
+        return post.line.indexOf('20') != 2;
+      },
+      _computeHidden5555: function (post) {
+        return post.line.indexOf('1') != 2;
       }
     });
   </script>

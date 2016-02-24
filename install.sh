@@ -12,7 +12,7 @@ install () {
 	echo Installing for $chosen ...
 	
 	# Installation stage
-	cordova create qucit com.example.qucit App
+	cordova create qucit com.example.qucit Transport Track
 	rm -r qucit/www/
 	mv qucit/* .
 	rm -r qucit/
@@ -23,9 +23,9 @@ install () {
 }
 
 echo --------------------------------------------------------
-echo App - A multi-platform application for ...
+echo Transport Track - A multi-platform application for ...
 echo --------------------------------------------------------
-echo App is currently available for Android and iOS
+echo Transport Track is currently available for Android and iOS
 echo ""
 echo Please choose 1,2 or 3 then hit ENTER:
 

@@ -8,7 +8,7 @@
         }
     </style>
     <template>
-        <iron-ajax auto url="../api/users.json" handle-as="json" on-response="tasksLoaded"></iron-ajax>
+        <iron-ajax auto url="api/users.json" handle-as="json" on-response="tasksLoaded"></iron-ajax>
     </template>
 
 <script>
@@ -26,7 +26,7 @@
         },
         tasksLoaded: function (data) {
             this.users = data.detail.response;
-            console.log('Loas user data');
+            console.log('Load user data');
         }
     });
 </script>
