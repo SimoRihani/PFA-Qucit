@@ -58,7 +58,7 @@ You can see the result in your browser by going to your localhost on port 8000 :
 
 If you want Transport Track on your smartphone, you can build it yourself by following the steps described above.
 
-Or you can just download our compiled version (22 Feb 2016) available here : https://drive.google.com/folderview?id=0B8GtnazCc-T7T3ZmZzlRTnY0V2s&usp=sharing
+Or you can just download our compiled version (28 Feb 2016) available here : https://drive.google.com/folderview?id=0B8GtnazCc-T7T3ZmZzlRTnY0V2s&usp=sharing
 
 ##Licensing
 
