@@ -1,42 +1,40 @@
 <!doctype html>
 <html lang="en">
-    <head>
+  <head>
 
     <script src="bower_components/webcomponentsjs/webcomponents-lite.min.js">
-      </script>
+    </script>
 
-      <link rel="import" href="bower_components/iron-flex-layout/iron-flex-layout.html">
-      <link rel="import" href="bower_components/polymer/polymer.html">
-      <link rel="import"
-        href="bower_components/paper-header-panel/paper-header-panel.html">
-      <link rel="import"
-        href="bower_components/paper-toolbar/paper-toolbar.html">
-      <link rel="import"
-        href="bower_components/paper-tabs/paper-tabs.html">
-      <link rel="import" href="./post-list.html">
+    <link rel="import" href="bower_components/iron-flex-layout/iron-flex-layout.html">
+    <link rel="import" href="bower_components/polymer/polymer.html">
+    <link rel="import" href="bower_components/paper-toolbar/paper-toolbar.html">
+    <link rel="import" href="bower_components/paper-tabs/paper-tabs.html">
+    <link rel="import" href="./post-list.html">
 
-        <title>Transport Track</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-        <meta name="mobile-web-app-capable" content="yes">
-        <meta name="apple-mobile-web-app-capable" content="yes">
-        <script src="bower_components/webcomponentsjs/webcomponents.js"></script>
-        <link rel="import" href="bower_components/iron-icons/iron-icons.html">
-        <link rel="import" href="bower_components/paper-header-panel/paper-header-panel.html">
-        <link rel="import" href="bower_components/paper-toast/paper-toast.html">
-        <link rel="import" href="bower_components/paper-fab/paper-fab.html">
-        <link rel='import' href='bower_components/paper-button/paper-button.html'/>
-        <link rel='import' href='bower_components/paper-icon-button/paper-icon-button.html'/>
-        <link rel='import' href='bower_components/paper-input/paper-input.html'/>
-        <link rel='import' href='bower_components/paper-dialog/paper-dialog.html'/>
-         <link rel='import' href='bower_components/paper-dropdown-menu/paper-dropdown-menu.html'/>
-         <link rel='import' href='bower_components/paper-listbox/paper-listbox.html'/>
-         <link rel='import' href='bower_components/paper-item/paper-item.html'/>
+    <title>Transport Track</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <script src="bower_components/webcomponentsjs/webcomponents.js"></script>
+    <link rel="import" href="bower_components/iron-icons/iron-icons.html">
+    <link rel="import" href="bower_components/paper-header-panel/paper-header-panel.html">
+    <link rel="import" href="bower_components/app-layout/app-layout.html">
+    <link rel="import" href="bower_components/paper-toast/paper-toast.html">
+    <link rel="import" href="bower_components/paper-fab/paper-fab.html">
+    <link rel='import' href='bower_components/paper-button/paper-button.html'/>
+    <link rel='import' href='bower_components/paper-icon-button/paper-icon-button.html'/>
+    <link rel='import' href='bower_components/paper-input/paper-input.html'/>
+    <link rel='import' href='bower_components/paper-dialog/paper-dialog.html'/>
+    <link rel='import' href='bower_components/paper-dropdown-menu/paper-dropdown-menu.html'/>
+    <link rel='import' href='bower_components/paper-listbox/paper-listbox.html'/>
+    <link rel='import' href='bower_components/paper-item/paper-item.html'/>
        
-        <script type="text/javascript" src="js/index.js"></script>
-        <script type="text/javascript">
-            app.initialize();
-        </script>
-         <style>
+    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript">
+      app.initialize();
+    </script>
+
+    <style>
       html,body {
         height: 100%;
         margin: 0;
@@ -45,8 +43,8 @@
       }
       #php { /*paper-header-panel*/
         height: 100%;
-        overflow: auto;
-        -webkit-overflow-scrolling: touch; 
+        /*overflow: auto;
+        -webkit-overflow-scrolling: touch;*/ 
       }
       #pt { /*paper-tabs*/
         background: #03a9f4;
@@ -96,42 +94,37 @@
           width: 400px;
         }
       }
-      </style>
-    </head>
-    <body unresolved id="main" is="auto-binding">
+    </style>
+  </head>
+  <body unresolved id="main" is="auto-binding">
 
+    <!--<paper-header-panel id="php">-->
+    <app-header-layout id="php">
+      <app-header fixed waterfall>
 
-        <paper-header-panel id="php">
+        <paper-toolbar id="pt">
 
-    <paper-toolbar id="pt">
+          <paper-tabs id="tabs" selected="0" self-end no-bar>
+            <paper-tab id="all" name="all" title="All paths">All</paper-tab>
+            <paper-tab id="actives" name="actives" title="Active paths">Active</paper-tab>
+          </paper-tabs>
 
-      <paper-tabs id="tabs" selected="0" self-end no-bar>
-        <paper-tab id="all" name="all" title="All paths">All</paper-tab>
-        <paper-tab id="favorites" name="favorites" title="Active paths">Active</paper-tab>
-      </paper-tabs>
-
-    </paper-toolbar>
-
-
+        </paper-toolbar>
+      </app-header>
         
-        <div class="container">
+      <div class="container">
+        <post-list show="0"></post-list>
+      </div>
+      <!--</paper-header-panel>-->
+    </app-header-layout>
 
-
-
-          <post-list show="0"></post-list>
-
-          
-        </div>
-
-      </paper-header-panel>
-
-      <script>
+    <script>
       var tabs = document.querySelector('paper-tabs');
       var list = document.querySelector('post-list');
 
        tabs.addEventListener('iron-select', function () {
       list.show = tabs.selected;
-    });
-      </script>
-    </body>
+      });
+    </script>
+  </body>
 </html>

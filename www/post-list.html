@@ -1,7 +1,6 @@
 <link rel="import" href="bower_components/polymer/polymer.html">
 <link rel="import" href="post-service/post-service.html">
 <link rel="import" href="post-service/user-service.html">
-<link rel="import" href="bower_components/paper-slider/paper-slider.html">
 <link rel="import" href="./post-card.html">
 <link rel="import" href="./user-page.html">
 <link rel="import" href="bower_components/paper-icon-button/paper-icon-button.html">
@@ -18,10 +17,11 @@
 <link rel="import" href="bower_components/neon-animation/animations/scale-up-animation.html">
 <link rel="import" href="bower_components/neon-animation/animations/fade-out-animation.html">
 <link rel="import" href="bower_components/paper-badge/paper-badge.html">
+  <link rel="import" href="bower_components/google-map/google-map.html">
 
 <dom-module id="post-list">
   <style>
-    /* TODO(polyup): For speed, consider reworking these styles with .classes
+    /* TODO : For speed, consider reworking these styles with .classes
                      and #ids rather than [attributes].
     */
     [layout] {
@@ -50,7 +50,6 @@
     }
     #connectionicon {
       color: #636363;
-      /*width: 52%;*/
       width: 20%;
     }
     #alert {
@@ -114,8 +113,6 @@
     paper-fab {
       --paper-fab-background: #03a9f4;
       --paper-fab-keyboard-focus-background: red;
-      /*position: relative; 
-      right:-43%;*/
       margin: 3px;
     }
     paper-checkbox {
@@ -136,192 +133,203 @@
       left: 25%;
       top: 35%;
     }
-
-    </style>
+  </style>
   
     
-    <template>
-      
-      <div id="control" class="layout horizontal">
+  <template>
+
+      <!--Control buttons-->
+    <div id="control" class="layout horizontal">
       <paper-fab id="user" icon="icons:supervisor-account" on-tap="showAddTaskDialog5" mini="true"></paper-fab>
       <paper-fab id="add" icon="add" on-tap="showAddTaskDialog3" mini="true"></paper-fab>
      <paper-fab id="relo" icon="icons:arrow-forward" on-tap= "refreshCall" mini="true"></paper-fab>
     </div>
 
-
+    <!--Loading paths data-->
     <post-service id="service" posts="{{posts}}"></post-service>
 
 
-      <paper-dialog id="addTaskDialog" modal entry-animation="scale-up-animation"
+      <!--Add connexion-->
+    <paper-dialog id="addTaskDialog" modal entry-animation="scale-up-animation" exit-animation="fade-out-animation">
+      <h2 class="add">Add connection</h2>
+      <div>
+        <paper-input label="Connection station :" value="{{connStation}}">
+        </paper-input>
+          <paper-input label="Arrival point :" value="{{arrival}}">
+          </paper-input>
+          <paper-input label="Direction :" value="{{direction}}">
+          </paper-input>
+
+          <paper-dropdown-menu label="Line" style="width:80px;">
+          <paper-listbox class="dropdown-content" id="list3">
+            <paper-item>A</paper-item>
+            <paper-item>B</paper-item>
+            <paper-item>C</paper-item>
+            <paper-item>16</paper-item>
+            <paper-item>20</paper-item>
+            <paper-item>1</paper-item>
+          </paper-listbox>
+        </paper-dropdown-menu>
+      </div>
+
+      <div>
+          <paper-button dialog-dismiss>Cancel</paper-button>
+          <paper-button on-click="addTask2">Add</paper-button>
+      </div>
+    </paper-dialog>
+
+    <!--Alternative path-->
+    <paper-dialog id="addTaskDialog2" modal entry-animation="scale-up-animation" exit-animation="fade-out-animation">
+      <h2 class="add">Alternative path</h2>
+      <p>Select your preference for the alternative path</p>
+      <div style="text-align: center;">
+        <iron-icon class="direction" icon="maps:directions-subway"></iron-icon>
+        <iron-icon class="direction" icon="maps:directions-bus"></iron-icon>
+        <iron-icon class="direction" icon="maps:directions-bike"></iron-icon>
+        <iron-icon class="direction" icon="maps:directions-walk"></iron-icon>
+      </div>
+      <div>
+        <paper-button dialog-dismiss>Cancel</paper-button>
+        <paper-button on-click="showAddTaskDialog4">Ok</paper-button>
+      </div>
+    </paper-dialog>
+
+            <!--Add new path-->
+    <paper-dialog id="addTaskDialog3" modal entry-animation="scale-up-animation"
               exit-animation="fade-out-animation">
-                <h2 class="add">Add connection</h2>
-                <div>
-                  <paper-input label="Connection station :" value="{{connStation}}">
-                  </paper-input>
-                   <paper-input label="Arrival point :" value="{{arrival}}">
-                   </paper-input>
-                   <paper-input label="Direction :" value="{{direction}}">
-                   </paper-input>
+      <h2 class="add">Add new path</h2>
+      <div>
+        <paper-input label="Starting point :" value="{{starting}}">
+        </paper-input>
+        <paper-input label="Arrival point :" value="{{arrival}}">
+        </paper-input>
+        <paper-input label="Direction :" value="{{direction}}">
+        </paper-input>
 
-                   <paper-dropdown-menu label="Line" style="width:80px;">
-                    <paper-listbox class="dropdown-content" id="list3">
-                      <paper-item>A</paper-item>
-                      <paper-item>B</paper-item>
-                      <paper-item>C</paper-item>
-                      <paper-item>16</paper-item>
-                      <paper-item>20</paper-item>
-                      <paper-item>1</paper-item>
-                    </paper-listbox>
-                  </paper-dropdown-menu>
-              </div>
-
-                <div>
-                    <paper-button dialog-dismiss>Cancel</paper-button>
-                    <paper-button on-click="addTask2">Add</paper-button>
-                </div>
-            </paper-dialog>
-
-            <paper-dialog id="addTaskDialog2" modal entry-animation="scale-up-animation"
-              exit-animation="fade-out-animation">
-                <h2 class="add">Alternative path</h2>
-                <p>Select your preference for the alternative path</p>
-                <div style="text-align: center;"><iron-icon class="direction" icon="maps:directions-subway"></iron-icon>
-                  <iron-icon class="direction" icon="maps:directions-bus"></iron-icon>
-                <iron-icon class="direction" icon="maps:directions-bike"></iron-icon>
-                <iron-icon class="direction" icon="maps:directions-walk"></iron-icon></div>
-                  <div>
-                    <paper-button dialog-dismiss>Cancel</paper-button>
-                    <paper-button on-click="showAddTaskDialog4">Ok</paper-button>
-                </div>
-            </paper-dialog>
-
-            <paper-dialog id="addTaskDialog3" modal entry-animation="scale-up-animation"
-              exit-animation="fade-out-animation">
-                <h2 class="add">Add new path</h2>
-                <div>
-                    <paper-input label="Starting point :" value="{{starting}}">
-                  </paper-input>
-                   <paper-input label="Arrival point :" value="{{arrival}}">
-                   </paper-input>
-                   <paper-input label="Direction :" value="{{direction}}">
-                   </paper-input>
-
-                   <div>
-                   <paper-dropdown-menu label="Day" style="width:90px;" >
-                    <paper-listbox class="dropdown-content" id="list">
-                      <paper-item>Mon</paper-item>
-                      <paper-item>Tue</paper-item>
-                      <paper-item>Wed</paper-item>
-                      <paper-item>Thu</paper-item>
-                       <paper-item>Fri</paper-item>
-                        <paper-item>Sat</paper-item>
-                         <paper-item>Sun</paper-item>
-                    </paper-listbox>
-                  </paper-dropdown-menu>
+        <div>
+          <paper-dropdown-menu label="Day" style="width:90px;" >
+            <paper-listbox class="dropdown-content" id="list">
+              <paper-item>Mon</paper-item>
+              <paper-item>Tue</paper-item>
+              <paper-item>Wed</paper-item>
+              <paper-item>Thu</paper-item>
+              <paper-item>Fri</paper-item>
+              <paper-item>Sat</paper-item>
+              <paper-item>Sun</paper-item>
+            </paper-listbox>
+          </paper-dropdown-menu>
 
 
-                   <paper-dropdown-menu label="Line" style="width:80px;">
-                    <paper-listbox class="dropdown-content" id="list2">
-                      <paper-item>A</paper-item>
-                      <paper-item>B</paper-item>
-                      <paper-item>C</paper-item>
-                      <paper-item>16</paper-item>
-                      <paper-item>20</paper-item>
-                      <paper-item>1</paper-item>
-                    </paper-listbox>
-                  </paper-dropdown-menu>
-                </div>
-              </div>
+          <paper-dropdown-menu label="Line" style="width:80px;">
+            <paper-listbox class="dropdown-content" id="list2">
+              <paper-item>A</paper-item>
+              <paper-item>B</paper-item>
+              <paper-item>C</paper-item>
+              <paper-item>16</paper-item>
+              <paper-item>20</paper-item>
+              <paper-item>1</paper-item>
+            </paper-listbox>
+          </paper-dropdown-menu>
+        </div>
+      </div>
 
-                <div>
-                    <paper-button dialog-dismiss>Cancel</paper-button>
-                    <paper-button on-click="addTask">Add</paper-button>
-                </div>
-            </paper-dialog>
-
-            <paper-dialog id="addTaskDialog4" modal style="width: 80%;" entry-animation="scale-up-animation"
-              exit-animation="fade-out-animation">
-                <h2 class="add">Alternative path</h2><br />
-                <div style="width: 100%; margin: 3px;">
-             <div vertical="" layout="" class="ligne">
-              <div class="icon" style="background-color: #DF0B19; font-size: 1.2em;">B</div>
-              <div class="icon" style="background-color: #682B9E;">A</div>
-            </div>
-            <div layout="" vertical="" id="alterP">
-               <h2 style=" margin: 0; width: 100%; font-size: 1.2em; font-weight: 300;">Victoire - Gambetta</h2>
-               <h5 style="margin: 0; font-size: 0.9em; font-weight: 200;">Bassin à flot</h5>
-             </div>
-             </div>
-                  <div>
-                    <paper-button dialog-dismiss>Cancel</paper-button>
-                  </div>
-            </paper-dialog>
+      <div>
+        <paper-button dialog-dismiss>Cancel</paper-button>
+        <paper-button on-click="addTask">Add</paper-button>
+      </div>
+    </paper-dialog>
 
 
-             <paper-dialog id="addTaskDialog5" modal entry-animation="scale-up-animation"
-              exit-animation="fade-out-animation">
-                  <user-service users="{{users}}"></user-service>
+    <!--Alternative path-->
+    <paper-dialog id="addTaskDialog4" modal style="width: 80%;" entry-animation="scale-up-animation" exit-animation="fade-out-animation">
+      <h2 class="add">Alternative path</h2><br />
+      <div style="width: 100%; margin: 3px;">
+        <div vertical="" layout="" class="ligne">
+          <div class="icon" style="background-color: #DF0B19; font-size: 1.2em;">B</div>
+          <div class="icon" style="background-color: #682B9E;">A</div>
+        </div>
+        <div layout="" vertical="" id="alterP">
+          <h2 style=" margin: 0; width: 100%; font-size: 1.2em; font-weight: 300;">Victoire - Gambetta</h2>
+          <h5 style="margin: 0; font-size: 0.9em; font-weight: 200;">Bassin à flot</h5>
+        </div>
+      </div>
+      <div>
+        <paper-button dialog-dismiss>Cancel</paper-button>
+      </div>
+    </paper-dialog>
 
 
+    <!--User profile-->
+    <paper-dialog id="addTaskDialog5" modal entry-animation="scale-up-animation" exit-animation="fade-out-animation">
 
-                <h2 class="add">User profile</h2>
-                 <template is="dom-repeat" items="[[users]]">
-                <div>
-                 <user-page>
+      <!--Loading user data-->
+      <user-service users="{{users}}"></user-service>
+              
+      <h2 class="add">User profile</h2>
+      <template is="dom-repeat" items="[[users]]">
+        <div>
+          <user-page>
+            <img width="70" height="70" src="img/Simo.png">
+            <h2><span>{{item.firstName}}</span> <span>{{item.lastName}}</span></h2>
+            <paper-item>
+              <p style="font-size: 0.8em;">{{item.email}}</p>
+              <iron-icon icon="icons:mail" style="position: relative; right: -15%;">
+              </iron-icon>
+            </paper-item>
 
-                  <img width="70" height="70" src="img/Simo.png">
-                  <h2><span>{{item.firstName}}</span> <span>{{item.lastName}}</span></h2>
-
-
-                   <paper-item>
-                    <p style="font-size: 0.8em;">{{item.email}}</p>
-                 
-                  <iron-icon icon="icons:mail" style="position: relative; right: -15%;"></iron-icon>
-                </paper-item>
-
-
-                <paper-item>
-                
-                    <p style="font-size: 0.8em;">{{item.phone}}</p>
-                 
-                  <iron-icon icon="icons:settings-phone" style="position: relative; right: -20%;"></iron-icon>
-                </paper-item>
+            <paper-item>
+              <p style="font-size: 0.8em;">{{item.phone}}</p>
+              <iron-icon icon="icons:settings-phone" style="position: relative; right: -20%;">
+              </iron-icon>
+            </paper-item>
                
+            <paper-item>
+              <p style="font-size: 0.8em;">{{item.address}},<br />{{item.zipCode}} {{item.city}}</p>
+              <iron-icon icon="icons:home" style="position: relative; right: -3%;">
+              </iron-icon>
+            </paper-item>
 
-
-                <paper-item>
-                  
-                    <p style="font-size: 0.8em;">{{item.address}},<br />{{item.zipCode}} {{item.city}}</p>
-                  
-                  <iron-icon icon="icons:home" style="position: relative; right: -3%;"></iron-icon>
-                </paper-item>
-
-                <br />
-
+            <br />
             
-                <div style="position: relative; right: -20%;">
-                <paper-checkbox checked>Enable notifications</paper-checkbox>
-              </div>
-                </user-page>
-              </div>
-            </template>
+            <div style="position: relative; right: -20%;">
+              <paper-checkbox checked>Enable notifications</paper-checkbox>
+            </div>
+          </user-page>
+        </div>
+      </template>
 
-                <div>
-                    <paper-button dialog-dismiss>Cancel</paper-button>
-                    <paper-button on-click="edit">Edit</paper-button>
-                   <!-- <paper-button on-click="logout">Logout</paper-button>-->
-                </div>
-            </paper-dialog>
+      <div>
+        <paper-button dialog-dismiss>Cancel</paper-button>
+        <paper-button on-click="edit">Edit</paper-button>
+        <!-- <paper-button on-click="logout">Logout</paper-button>-->
+      </div>
+    </paper-dialog>
+
+    <!--Displaying path on map-->
+    <paper-dialog id="addTaskDialog6" modal style="width: 80%;" entry-animation="scale-up-animation" exit-animation="fade-out-animation">
+      <h2>Test</h2>
+      <google-map latitude="37.77493" longitude="-122.41942" fit-to-markers>
+        <google-map-marker latitude="37.779" longitude="-122.3892" draggable="true" title="Go Giants!">
+        </google-map-marker>
+        <google-map-marker latitude="37.777" longitude="-122.38911">
+        </google-map-marker>
+      </google-map>
+      <div>
+        <paper-button dialog-dismiss>Cancel</paper-button>
+      </div>
+    </paper-dialog>
 
 
-    
 
 
     <div layout="" vertical="" center="">
       <br /><br /><br />
       <template id="paths" is="dom-repeat" items="[[posts]]" sort="_sort">
   
-        <post-card favorite="{{item.favorite}}" on-favorite-tap="handleFavorite" deleted="item.deteted" on-deleted-tap="removeItem" filter="isDeleted" hidden="{{_computeHidden(item, show)}}">
+        <post-card active="{{item.active}}" on-active-tap="handleActive" deleted="item.deteted" on-deleted-tap="removeItem" filter="isDeleted" hidden="{{_computeHidden(item, show)}}">
+
+          <!--<paper-icon-button id="direct" icon="maps:directions" title="Update" on-    tap="showAddTaskDialog6">
+          </paper-icon-button>-->
 
           <h3><span>{{item.day}}</span></h3>
           
@@ -380,14 +388,6 @@
         show: { type: String, notify: true, value: "0"}
         
       },
-     /* ready: function() {
-
-    console.log("Debug new load");
-  $.get('api/posts.json',function(data){
-    this.posts = $.parseJSON(data);
-      console.log(this.posts);
-    }.bind(this));
-    },*/
       _sort: function (a, b) {
 
         if (a.day === b.day) return 0;
@@ -444,12 +444,12 @@
 
         return aDay < bDay ? -1 : 1;
       },
-      handleFavorite: function (e) {
+      handleActive: function (e) {
         var model = e.model;
         var i = model.index + 1;
-        //model.favorite = !model.favorite;
-        model.set('item.favorite', (model.item.favorite));
-        console.log('Change active ' + i + ', to ' + model.item.favorite);
+        //model.active = !model.active;
+        model.set('item.active', (model.item.active));
+        console.log('Change active ' + i + ', to ' + model.item.active);
       },
       removeItem: function(e){
         var model = e.model;
@@ -474,7 +474,7 @@
             connStation : "", 
             day : "",
             avatar : "img/B.png",
-            favorite: false,
+            active: false,
             breakdown: false,
             connection: false,
             deleted: false
@@ -569,31 +569,10 @@
 
          
          this.$.addTaskDialog.close();
-      /*var task = {
-             pid: 7,
-            line: "B",
-            pathname : this.pathname,
-            direction : this.direction,
-            connStation : "", 
-            time : "8:00",
-            day : "Lundi",
-            avatar : "img/B.png",
-            favorite: false,
-            breakdown: false,
-            connection: false,
-            deleted: false
-        };
-        this.push('posts', task);
-       this.$.addTaskDialog3.close();*/
       },
       isDeleted: function(item) {
       return item.deleted == 'true';
       },
-      /*handleFavorite: function (event, detail, sender) {
-        var dataHost = (this.dataHost && this.dataHost._rootDataHost) || this.dataHost;
-        var item = sender.dataHost.item;
-        this.$.service.setFavorite(item.pid, item.favorite);
-      },*/
       showAddTaskDialog: function(e) {
         var model = e.model;
         var i = model.index + 1;
@@ -606,7 +585,7 @@
         this.$.addTaskDialog2.open();
       },
       showAddTaskDialog3: function() {
-        console.log('Add new path');
+        console.log('Add new path ?');
         this.$.addTaskDialog3.open();
       },
       showAddTaskDialog4: function() {
@@ -618,6 +597,10 @@
         console.log('Display user profile');
         this.$.addTaskDialog5.open();
       },
+      showAddTaskDialog6: function() {
+        console.log('Display map');
+        this.$.addTaskDialog6.open();
+      },
       refreshCall: function() {
         console.log('Logout');
         window.location.reload(true);
@@ -628,7 +611,7 @@
          window.location.reload(true);
       },
       _computeHidden: function (post, show) {
-        return post.deleted || (show == '1' && !post.favorite);
+        return post.deleted || (show == '1' && !post.active);
       },
       _computeHidden2: function (post) {
         return post.line.indexOf('B') != 0;

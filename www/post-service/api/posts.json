@@ -7,7 +7,7 @@
     "direction" : "Pessac Centre",
     "connStation" : "", 
     "day" : "Mon",
-    "favorite": false,
+    "active": false,
     "breakdown": true,
     "connection": false,
     "deleted": false
@@ -20,7 +20,7 @@
     "direction" : "Bassin à Flot",
     "connStation" : "",
     "day" : "Mon",
-    "favorite": true,
+    "active": true,
     "breakdown": true,
     "connection": false,
     "deleted": false 
@@ -33,7 +33,7 @@
     "direction" : "Bassin à Flot / Le Haillan Rostand",
     "connStation" : "Hôtel de Ville",
     "day" : "Mon",
-    "favorite": true,
+    "active": true,
     "breakdown": false,
     "connection": true,
     "deleted": false 
@@ -46,7 +46,7 @@
     "direction" : "Parc des Expositions",
     "connStation" : "",
     "day" : "Tue",
-    "favorite": false,
+    "active": false,
     "breakdown": false,
     "connection": false,
     "deleted": false 
@@ -59,7 +59,7 @@
     "direction" : "Bordeaux République",
     "connStation" : "",
     "day" : "Thu",
-    "favorite": false,
+    "active": false,
     "breakdown": false,
     "connection": false,
     "deleted": false 
@@ -72,7 +72,7 @@
     "direction" : "Bassin à Flot",
     "connStation" : "",
     "day" : "Sat",
-    "favorite": false,
+    "active": false,
     "breakdown": false,
     "connection": false,
     "deleted": false 
@@ -85,7 +85,7 @@
     "direction" : "Talence Thouars",
     "connStation" : "",
     "day" : "Wed",
-    "favorite": true,
+    "active": true,
     "breakdown": false,
     "connection": false,
     "deleted": false 
@@ -98,7 +98,7 @@
     "direction" : "Bordeaux Victoire",
     "connStation" : "",
     "day" : "Wed",
-    "favorite": true,
+    "active": true,
     "breakdown": false,
     "connection": false,
     "deleted": false 
@@ -111,7 +111,7 @@
     "direction" : "Mérignac Aéroport",
     "connStation" : "",
     "day" : "Tue",
-    "favorite": true,
+    "active": true,
     "breakdown": false,
     "connection": false,
     "deleted": false 
@@ -124,7 +124,7 @@
     "direction" : "Bordeaux Gare St Jean",
     "connStation" : "",
     "day" : "Tue",
-    "favorite": true,
+    "active": true,
     "breakdown": false,
     "connection": false,
     "deleted": false 
@@ -137,7 +137,7 @@
     "direction" : "La Gardette / Pessac Centre",
     "connStation" : "Hôtel de Ville",
     "day" : "Mon",
-    "favorite": true,
+    "active": true,
     "breakdown": false,
     "connection": true,
     "deleted": false 
@@ -150,7 +150,7 @@
     "direction" : "La Gardette",
     "connStation" : "",
     "day" : "Sun",
-    "favorite": false,
+    "active": false,
     "breakdown": true,
     "connection": false,
     "deleted": false 

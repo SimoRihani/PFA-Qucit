@@ -11,24 +11,24 @@
         <iron-ajax auto url="api/users.json" handle-as="json" on-response="tasksLoaded"></iron-ajax>
     </template>
 
-<script>
-    Polymer({
-        is: "user-service",
-        properties: {
-            users: {
-                type: Array,
-                reflectToAttribute: true,
-                notify: true
+    <script>
+        Polymer({
+            is: "user-service",
+            properties: {
+                users: {
+                    type: Array,
+                    reflectToAttribute: true,
+                    notify: true
+                }
+            },
+            attached: function () {
+                this.users = [];
+            },
+            tasksLoaded: function (data) {
+                this.users = data.detail.response;
+                console.log('Load user data');
             }
-        },
-        attached: function () {
-            this.users = [];
-        },
-        tasksLoaded: function (data) {
-            this.users = data.detail.response;
-            console.log('Load user data');
-        }
-    });
-</script>
+        });
+    </script>
 </dom-module>
 

@@ -5,21 +5,12 @@
  <link rel='import' href='../bower_components/paper-button/paper-button.html'/>
  <link rel='import' href='../bower_components/paper-icon-button/paper-icon-button.html'/>
 
-
-
-<link rel="import" href="../bower_components/paper-slider/paper-slider.html">
-
-<link rel="import" href="../bower_components/paper-fab/paper-fab.html">
-
 <link rel="import" href="../bower_components/paper-dropdown-menu/paper-dropdown-menu.html">
-<link rel="import" href="../bower_components/paper-listbox/paper-listbox.html">
-<link rel="import" href="../bower_components/paper-checkbox/paper-checkbox.html">
 <link rel="import" href="../bower_components/iron-flex-layout/classes/iron-flex-layout.html">
 
 <link rel="import" href="../bower_components/iron-icons/maps-icons.html">
 <link rel="import" href="../bower_components/neon-animation/animations/scale-up-animation.html">
 <link rel="import" href="../bower_components/neon-animation/animations/fade-out-animation.html">
-<link rel="import" href="../bower_components/paper-badge/paper-badge.html">
 <link rel="import" href="../bower_components/google-signin/google-signin.html">
 
 
@@ -35,21 +26,21 @@
               opacity: 0.8;
         }
          paper-input {
-        --paper-input-container-focus-color: #03a9f4;
-        --paper-input-container-invalid-color: green;
-        --paper-input-container-input-color: black;
-    }
-    #goog {
-        position: absolute;
-        left: 35%;
-        top: 25%;
-    }
+            --paper-input-container-focus-color: #03a9f4;
+            --paper-input-container-invalid-color: green;
+            --paper-input-container-input-color: black;
+        }
+        #goog {
+            position: absolute;
+            left: 35%;
+            top: 25%;
+        }
     </style>
     <template>
-        <paper-dialog id="addTaskDialog" modal entry-animation="scale-up-animation"
-              exit-animation="fade-out-animation">
+        <!--Sign in-->
+        <paper-dialog id="addTaskDialog" modal entry-animation="scale-up-animation" exit-animation="fade-out-animation">
                 <h2 class="add">Sign in</h2>
-                <google-signin id="goog" theme="dark" client-id="smimo22" scopes="https://www.googleapis.com/auth/drive"></google-signin>
+                <google-signin id="goog" client-id="smimo22" scopes="https://www.googleapis.com/auth/drive"></google-signin>
                 <img width="70" height="70" src="../img/avatar.png">
                 <div>
                     <paper-input label="Email" value="{{email}}">
@@ -62,53 +53,51 @@
                     <paper-button on-click="subscribe">Subscribe</paper-button>
                     <paper-button on-click="login">Login</paper-button>
                 </div>
-            </paper-dialog>
-        <iron-ajax id="aj" auto url="api/posts.json" handle-as="json" on-response="tasksLoaded"></iron-ajax>
+        </paper-dialog>
+        <iron-ajax id="aj" auto url="api/posts.json" handle-as="json" on-response="tasksLoaded">
+        </iron-ajax>
     </template>
 
-<script>
-    Polymer({
-        is: "post-service",
-        properties: {
-             posts: {
-                type: Array,
-                reflectToAttribute: true,
-                notify: true
+    <script>
+        Polymer({
+            is: "post-service",
+            properties: {
+                 posts: {
+                    type: Array,
+                    reflectToAttribute: true,
+                    notify: true
+                },
+                Tposts: {
+                    type: Array,
+                    reflectToAttribute: true,
+                    notify: true
+                }
             },
-            Tposts: {
-                type: Array,
-                reflectToAttribute: true,
-                notify: true
-            }
-        },
-        attached: function () {
-            this.posts = [];
-            this.Tposts = [];
-        },
-        tasksLoaded: function (data) {
-            console.log('Sign in');
-            this.$.addTaskDialog.open();
-            //this.$.addTaskDialog.close();
-            this.Tposts = data.detail.response;
-            //console.log('Load paths data');
-            
-        },
-        login: function () {
-           // if (this.email == "smimo22@gmail.com" && this.password == "root") {
-            if(this.email == "root" && this.password == "root") {
-                 console.log('Login passed');
-                 this.$.addTaskDialog.close();
-                this.posts = this.Tposts;
-                console.log('Load paths data');
-            }
-            else 
-                console.log('Login not passed');
-        },
-        setFavorite: function (pid, isFavorite) {
-        // no service backend, just log the change
-        console.log('Favorite changed: ' + pid + ', now: ' + isFavorite);
-      }
-    });
-</script>
+            attached: function () {
+                this.posts = [];
+                this.Tposts = [];
+            },
+            tasksLoaded: function (data) {
+                console.log('Sign in');
+                this.$.addTaskDialog.open();
+                this.Tposts = data.detail.response;
+            },
+            login: function () {
+               // if (this.email == "smimo22@gmail.com" && this.password == "root") {
+                if(this.email == "root" && this.password == "root") {
+                     console.log('Login passed');
+                     this.$.addTaskDialog.close();
+                    this.posts = this.Tposts;
+                    console.log('Load paths data');
+                }
+                else 
+                    console.log('Login not passed');
+            },
+            setActive: function (pid, isActive) {
+            // no service backend, just log the change
+            console.log('Active changed: ' + pid + ', now: ' + isActive);
+          }
+        });
+    </script>
 </dom-module>
 
