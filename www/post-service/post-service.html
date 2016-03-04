@@ -38,22 +38,44 @@
     </style>
     <template>
         <!--Sign in-->
-        <paper-dialog id="addTaskDialog" modal entry-animation="scale-up-animation" exit-animation="fade-out-animation">
+        <paper-dialog id="addTaskDialog" modal entry-animation="scale-up-animation" exit-animation="fade-out-animation" style="width: 55%;">
                 <h2 class="add">Sign in</h2>
                 <google-signin id="goog" client-id="smimo22" scopes="https://www.googleapis.com/auth/drive"></google-signin>
                 <img width="70" height="70" src="../img/avatar.png">
                 <div>
                     <paper-input label="Email" value="{{email}}">
+                     <div suffix>@gmail.com</div>
                   </paper-input>
-                   <paper-input label="Password" type="password" value="{{password}}">
+                   <paper-input label="Password" type="password" char-counter maxlength="10" value="{{password}}">
                    </paper-input>
               </div>
 
                 <div>
-                    <paper-button on-click="subscribe">Subscribe</paper-button>
+                    <paper-button on-click="signup">Sign up</paper-button>
                     <paper-button on-click="login">Login</paper-button>
                 </div>
         </paper-dialog>
+
+        <!--Sign up-->
+        <paper-dialog id="addTaskDialog2" modal entry-animation="scale-up-animation" exit-animation="fade-out-animation" style="width: 55%;">
+                <h2 class="add">Sign up</h2>
+                <img width="70" height="70" src="../img/avatar.png">
+                <div>
+                    <paper-input label="Email" value="{{email}}">
+                    <div suffix>@gmail.com</div>
+                  </paper-input>
+                   <paper-input label="Password" type="password" char-counter maxlength="10" value="{{password}}">
+                   </paper-input>
+                   <paper-input label="Confirm password" type="password" char-counter maxlength="10" value="{{password2}}">
+                   </paper-input>
+              </div>
+
+                <div>
+                    <paper-button on-click="cancel">Cancel</paper-button>
+                    <paper-button on-click="addUser">OK</paper-button>
+                </div>
+        </paper-dialog>
+
         <iron-ajax id="aj" auto url="api/posts.json" handle-as="json" on-response="tasksLoaded">
         </iron-ajax>
     </template>
@@ -71,11 +93,17 @@
                     type: Array,
                     reflectToAttribute: true,
                     notify: true
+                },
+                users: {
+                    type: Array,
+                    reflectToAttribute: true,
+                    notify: true
                 }
             },
             attached: function () {
                 this.posts = [];
                 this.Tposts = [];
+                this.users = [];
             },
             tasksLoaded: function (data) {
                 console.log('Sign in');
@@ -83,8 +111,14 @@
                 this.Tposts = data.detail.response;
             },
             login: function () {
+                /*var user = {
+                email : this.email, 
+                password : this.password
+              };*/
+              //console.log('Debug user : ' + this.users[0].email + ' ' + this.users[0].password);
+              //console.log('Debug : ' + this.users.lastIndexOf(user));
                // if (this.email == "smimo22@gmail.com" && this.password == "root") {
-                if(this.email == "root" && this.password == "root") {
+                if((this.email == "root" && this.password == "root") || (this.users[0].email == this.email && this.users[0].password == this.password)) {
                      console.log('Login passed');
                      this.$.addTaskDialog.close();
                     this.posts = this.Tposts;
@@ -92,6 +126,29 @@
                 }
                 else 
                     console.log('Login not passed');
+            },
+            signup: function () {
+                console.log('Sign up');
+                this.$.addTaskDialog.close();
+                this.$.addTaskDialog2.open();
+            },
+            cancel: function () {
+                this.$.addTaskDialog2.close();
+                this.$.addTaskDialog.open();
+            },
+            addUser: function () {
+                if(this.email != "" && this.password != "" && this.password == this.password2) {
+                    var newUser = {
+                    email : this.email, 
+                    password : this.password
+                  }; 
+                  this.push('users', newUser);
+                  console.log('Adding new user : ' + this.users[this.users.length - 1].email);
+                  this.$.addTaskDialog2.close();
+                this.$.addTaskDialog.open();
+                }
+                else
+                    console.log('Error');
             },
             setActive: function (pid, isActive) {
             // no service backend, just log the change
