@@ -52,7 +52,7 @@ If you want to have an overview of Transport Track on your browser, run the foll
 	cd pfa29_client/www/
 	python -m SimpleHTTPServer
 	
-You can see the result in your browser by going to your localhost on port 8000 : `http://localhost:8000`
+You can see the result in your browser by going to your localhost on port 8000 : `localhost:8000`
 
 ##Get Transport Track
 
