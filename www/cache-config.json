@@ -1,0 +1,8 @@
+{
+  "cacheID": "Transport Track",
+  "disabled": "false",
+  "precache": [
+    "API/lines.json",
+    "bower_components\/webcomponentsjs\/webcomponents.js"
+  ]
+}

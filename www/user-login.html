@@ -1,0 +1,167 @@
+<link rel="import" href="bower_components/polymer/polymer.html">
+<link rel="import" href="bower_components/iron-ajax/iron-ajax.html">
+<link rel='import' href='bower_components/paper-input/paper-input.html'/>
+<link rel='import' href='bower_components/paper-dialog/paper-dialog.html'/>
+ <link rel='import' href='bower_components/paper-button/paper-button.html'/>
+ <link rel='import' href='bower_components/paper-icon-button/paper-icon-button.html'/>
+
+<link rel="import" href="bower_components/paper-dropdown-menu/paper-dropdown-menu.html">
+<link rel="import" href="bower_components/iron-flex-layout/classes/iron-flex-layout.html">
+
+<link rel="import" href="bower_components/iron-icons/maps-icons.html">
+<link rel="import" href="bower_components/neon-animation/animations/scale-up-animation.html">
+<link rel="import" href="bower_components/neon-animation/animations/fade-out-animation.html">
+<link rel="import" href="bower_components/google-signin/google-signin.html">
+
+
+
+<dom-module id="user-login">
+    <style>
+        :host {
+
+        }
+        img {
+            width: 70px;
+              border-radius: 50%;
+              opacity: 0.8;
+        }
+         paper-input {
+            --paper-input-container-focus-color: #03a9f4;
+            --paper-input-container-invalid-color: green;
+            --paper-input-container-input-color: black;
+        }
+        #goog {
+            position: absolute;
+            left: 35%;
+            top: 25%;
+        }
+    </style>
+    <template>
+      
+        <!--Sign in-->
+        <paper-dialog id="addTaskDialog" modal entry-animation="scale-up-animation" exit-animation="fade-out-animation" style="width: 250px;" opened="true">
+                <h2 class="add">Sign in</h2>
+                <google-signin id="goog" client-id="smimo22" scopes="https://www.googleapis.com/auth/drive"></google-signin>
+                <img width="70" height="70" src="../img/avatar.png">
+                <div>
+                    <paper-input label="Email" value="{{email}}">
+                     <div suffix>@gmail.com</div>
+                  </paper-input>
+                   <paper-input label="Password" type="password" char-counter maxlength="10" value="{{password}}">
+                   </paper-input>
+              </div>
+
+                <div>
+                    <paper-button on-click="signup">Sign up</paper-button>
+                    <paper-button on-click="login">Login</paper-button>
+                </div>
+        </paper-dialog>
+
+        <!--Sign up-->
+        <paper-dialog id="addTaskDialog2" modal entry-animation="scale-up-animation" exit-animation="fade-out-animation" style="width: 270px; height: 550px;">
+                <h2 class="add">Sign up</h2>
+                <img width="70" height="70" src="../img/avatar.png">
+                <div>
+                  <paper-input label="First Name" value="{{fName}}">
+                  </paper-input>
+                  <paper-input label="Last Name" value="{{lName}}">
+                  </paper-input>
+                    <paper-input label="Email" value="{{email}}">
+                    <div suffix>@gmail.com</div>
+                  </paper-input>
+                   <paper-input label="Password" type="password" char-counter maxlength="10" value="{{password}}">
+                   </paper-input>
+                   <paper-input label="Confirm password" type="password" char-counter maxlength="10" value="{{password2}}">
+                   </paper-input>
+              </div>
+
+                <div>
+                    <paper-button on-click="cancel">Cancel</paper-button>
+                    <paper-button on-click="addUser">OK</paper-button>
+                </div>
+        </paper-dialog>
+
+    </template>
+
+    <script>
+        Polymer({
+            is: "user-login",
+            properties: {
+                users: {
+                    type: Array,
+                    reflectToAttribute: true,
+                    notify: true
+                },
+                urls: {
+                    type: Array,
+                    reflectToAttribute: true,
+                    notify: true
+                }
+            },
+            attached: function () {
+                this.users = [];
+                this.urls = [];
+            },
+            ready: function () {
+                console.log('Debug');
+                //console.log('Sign in');
+                this.$.addTaskDialog.open();
+                //this.Tposts = data.detail.response;
+            },
+            /**
+            * Login function
+            * @Name  : login
+            **/
+            login: function () {
+                /*var user = {
+                email : this.email, 
+                password : this.password
+              };*/
+              //console.log('Debug user : ' + this.users[0].email + ' ' + this.users[0].password);
+              //console.log('Debug : ' + this.users.lastIndexOf(user));
+               // if (this.email == "smimo22@gmail.com" && this.password == "root") {
+                if((this.email == "root" && this.password == "root") || (this.users[0].email == this.email && this.users[0].password == this.password)) {
+                     console.log('Login passed');
+                     this.$.addTaskDialog.close();
+                     this.urls.push("API/posts.json");             
+                }
+                else 
+                    console.log('Login not passed');
+            },
+            /**
+            * Sign up function
+            * @Name  : login
+            **/
+            signup: function () {
+                console.log('Sign up');
+                this.$.addTaskDialog.close();
+                this.$.addTaskDialog2.open();
+            },
+            cancel: function () {
+                this.$.addTaskDialog2.close();
+                this.$.addTaskDialog.open();
+            },
+             /**
+            * Add new user
+            * @Name  : addUser
+            **/
+            addUser: function () {
+                if(this.email != "" && this.password != "" && this.password == this.password2) {
+                    var newUser = {
+                    firstName: this.fName,
+                    lastName: this.lName,
+                    email : this.email, 
+                    password : this.password
+                  }; 
+                  this.push('users', newUser);
+                  console.log('Adding new user : ' + this.users[this.users.length - 1].email);
+                  this.$.addTaskDialog2.close();
+                this.$.addTaskDialog.open();
+                }
+                else
+                    console.log('Error');
+            }
+        });
+    </script>
+</dom-module>
+
