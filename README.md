@@ -10,6 +10,8 @@ Transport Track is available for all platforms supported by the [Apache Cordova]
 
 The client side is developed with [Polymer][] and [Material Design][] Google frameworks, and the back-end with Python through [Flask][] and [Pandas][] frameworks.
 
+This project involves [Web Components][] in the client side, and [BI][] (Business inteligence) through some [Machine Learning][] algorithms in the transportation failures collection.
+
 ##Installation
 
 First, you need to get [Apache Cordova][], with [npm][] : `npm install -g cordova` or download it from the website.
@@ -94,6 +96,8 @@ Transport Track is licensed under the GNU LGPL, Version 3.0. See LICENSE for ful
 [npm]: https://www.npmjs.com/
 [Flask]: http://flask.pocoo.org
 [Pandas]: http://pandas.pydata.org
+[Web components]: http://webcomponents.org/
+[BI]: https://en.wikipedia.org/wiki/Business_intelligence
 [Android SDK]: http://developer.android.com/sdk/installing/index.html
 [Xcode]: https://itunes.apple.com/fr/app/xcode/id497799835?mt=12
 [Mohammed RIHANI]: http://mrihani.vvv.enseirb-matmeca.fr
