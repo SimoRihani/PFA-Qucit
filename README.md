@@ -24,7 +24,7 @@ Clone Qucit - Transport Track with `git clone https://github.com/piroux/pfa29_cl
 
 Run the install.sh script :
 
-	cd pfa29_client/
+	cd PFA-Qucit/
 	chmod 700 install.sh
 	./install.sh
 
@@ -32,7 +32,7 @@ Run the install.sh script :
 
 Run the following :
 
-	cd pfa29_client/
+	cd PFA-Qucit/
 	cordova create qucit com.debug.qucit Transport Track
 	rm -r qucit/www/
 	mv qucit/* .
@@ -51,16 +51,16 @@ Build it with `cordova build` or just run it on your device  with `cordova run a
 
 If you want to have an overview of Transport Track on your browser, run the following :
 
-	cd pfa29_client/www/
-	python -m SimpleHTTPServer
+	cd PFA-Qucit/www/
+	python -m SimpleHTTPServer 8080
 	
-You can see the result in your browser by going to your localhost on port 8000 : `localhost:8000`
+You can see the result in your browser by going to your localhost on port 8080 : `localhost:8080`
 
 ##Get Transport Track
 
 If you want Transport Track on your smartphone, you can build it yourself by following the steps described above.
 
-Or you can just download our compiled version (28 Feb 2016) available here : https://drive.google.com/folderview?id=0B8GtnazCc-T7T3ZmZzlRTnY0V2s&usp=sharing
+Or you can just download our compiled version (April 2016) available here : https://drive.google.com/folderview?id=0B8GtnazCc-T7T3ZmZzlRTnY0V2s&usp=sharing
 
 ##Licensing
 
