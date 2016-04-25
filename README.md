@@ -72,7 +72,7 @@ Transport Track is licensed under the GNU LGPL, Version 3.0. See LICENSE for ful
 
 ###Client
 
-- Nicolas BONOTTE (CTO at [Qucit][]) - nicolas.bonotte@qucit.com
+- Raphaël CHERRIER (CEO at [Qucit][]) - raphael.cherrier@qucit.com
 - Hassene BENSALEM (CTO at [Qucit][]) - hassene.bensalem@qucit.com
 
 ###Students
