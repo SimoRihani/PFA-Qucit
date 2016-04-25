@@ -66,6 +66,15 @@ Or you can just download our compiled version (April 2016) available here : http
 
 Transport Track is licensed under the GNU LGPL, Version 3.0. See LICENSE for full license text.
 
+##Useful links
+
+- A demonstration of the client side : https://www.youtube.com/watch?v=Ge3O-btlwzI
+- Tender specifications : http://mrihani.vvv.enseirb-matmeca.fr/donnee/PFA_CDC.pdf
+- Documentation : http://mrihani.vvv.enseirb-matmeca.fr/donnee/PFA_Doc.pdf
+- Repport : http://mrihani.vvv.enseirb-matmeca.fr/donnee/PFA_Rapport.pdf
+- Presentation : http://mrihani.vvv.enseirb-matmeca.fr/donnee/PFA_Presentation.pdf
+
+
 ##Contacts
 
 ###Supervisor
