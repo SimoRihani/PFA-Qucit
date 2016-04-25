@@ -8,9 +8,9 @@ Its has been developed for a start-up incubated in the [Aquitaine Regional Incub
 
 Transport Track is available for all platforms supported by the [Apache Cordova][] framework but actually only tested on iOS and Android.
 
-The client side is developed with [Polymer][] and [Material Design][] Google frameworks, and the back-end with Python through [Flask][] and [Pandas][] frameworks.
+The front-end is developed with [Polymer][] and [Material Design][] Google frameworks, and the back-end with Python through [Flask][] and [Pandas][] frameworks.
 
-This project involves [Web Components][] in the client side, and [BI][] (Business inteligence) using some [Machine Learning][] algorithms in the transportation failures treatment (classification) int the back-end.
+This project involves [Web Components][] in the client side, and [BI][] (Business inteligence) using some [Machine Learning][] algorithms in the transportation failures treatment (classification) in the server side.
 
 ##Installation
 
