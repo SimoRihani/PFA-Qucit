@@ -98,7 +98,7 @@ Transport Track is licensed under the GNU LGPL, Version 3.0. See LICENSE for ful
 [Pandas]: http://pandas.pydata.org
 [Web components]: http://webcomponents.org/
 [BI]: https://en.wikipedia.org/wiki/Business_intelligence
-[Machine Leraning]: https://en.wikipedia.org/wiki/Machine_learning
+[Machine Learning]: https://en.wikipedia.org/wiki/Machine_learning
 [Android SDK]: http://developer.android.com/sdk/installing/index.html
 [Xcode]: https://itunes.apple.com/fr/app/xcode/id497799835?mt=12
 [Mohammed RIHANI]: http://mrihani.vvv.enseirb-matmeca.fr
