@@ -18,7 +18,7 @@ First, you need to get [Apache Cordova][], with [npm][] : `npm install -g cordov
 And also, you have to install the [Android SDK][] to build android Transport Track version, or [Xcode][] to build it for iOS.
 (Think to include the SDK's `tools/` and `platform-tools/` directories  in your `PATH` after installing Android SDK (here's a link that can help you doing these installations : https://cordova.apache.org/docs/en/4.0.0/guide/platforms/android/ ))
 
-Clone Qucit - Transport Track with `git clone https://github.com/piroux/pfa29_client`
+Clone Qucit - Transport Track with `git clone https://github.com/SimoRihani/PFA-Qucit.git`
 
 ####Auto install :
 
