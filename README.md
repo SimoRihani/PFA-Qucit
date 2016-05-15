@@ -10,7 +10,7 @@ Transport Track is available for all platforms supported by the [Apache Cordova]
 
 The front-end is developed with [Polymer][] and [Material Design][] Google frameworks, and the back-end with Python through [Flask][] and [Pandas][] frameworks.
 
-This project involves [Web Components][] in the client side, and [Data science][] using some [Machine Learning][] algorithms in the transportation failures treatment (classification) in the server side.
+This project involves [Web Components][] in the client side, and [Data science][] using some [Machine Learning][] algorithms in the transportation failures treatment (classification and predictive analytics) in the server side.
 
 ##Installation
 
