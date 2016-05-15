@@ -88,12 +88,12 @@ Transport Track is licensed under the GNU LGPL, Version 3.0. See LICENSE for ful
 
 ###Students
 
-- [Mohammed RIHANI][] - Mohammed.Rihani@enseirb-matmeca.fr
 - Mehdi BOUNAKHLA - Mehdi.Bounakhla@enseirb-matmeca.fr
-- Pierre ROUX - Pierre.Roux@enseirb-matmeca.fr
-- Victor SAINT GUILHEM - Victor.Saint-Guilhem@enseirb-matmeca.fr
 - Romain RAMBAUD - Romain.Rambaud@enseirb-matmeca.fr
 - Nathan REAVAILLE - Nathan.Reavaille@enseirb-matmeca.fr
+- [Mohammed RIHANI][] - Mohammed.Rihani@enseirb-matmeca.fr
+- Pierre ROUX - Pierre.Roux@enseirb-matmeca.fr
+- Victor SAINT GUILHEM - Victor.Saint-Guilhem@enseirb-matmeca.fr
 
 [ENSEIRB-MATMECA]: http://www.enseirb-matmeca.fr
 [Bordeaux-INP]: https://www.bordeaux-inp.fr/
